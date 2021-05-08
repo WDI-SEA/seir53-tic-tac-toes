@@ -2,12 +2,28 @@
 <html>
     <head>
         <title>Tic Tac Toe</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel='stylesheet' href='./styles/style.css' />
         <script src='./scripts/app.js'></script>
     </head>
     <body>
         <h1>Tic Tac Toe</h1>
-        <div id='userMessage'>X's start first</div>
+        <h4>"mobile version"</h4>
+        <label for="user1Icon">Player One:</label>
+        <input type="radio" class='user1Icon' name='user1Icon' value='❌' checked>❌
+        <input type="radio" class='user1Icon' name='user1Icon' value='🍣'>🍣
+        <input type="radio" class='user1Icon' name='user1Icon' value='🍪'>🍪
+        <input type="radio" class='user1Icon' name='user1Icon' value='🍍'>🍍
+        </br>
+        <label for="user2Icon">Player Two:</label>
+        <input type="radio" class='user2Icon' name='user2Icon' value='⭕️' checked>⭕️
+        <input type="radio" class='user2Icon' name='user2Icon' value='🥑'>🥑
+        <input type="radio" class='user2Icon' name='user2Icon' value='🍩'>🍩
+        <input type="radio" class='user2Icon' name='user2Icon' value='🍕'>🍕
+        </br>
+        <button id='reset'>Start</button>
+        <div id='userMessage'>Select your emoji's 😁</div>
         <div id='container'>
             <div class='gameTile' id='gt1'></div>
             <div class='gameTile' id='gt2'></div>
@@ -19,7 +35,6 @@
             <div class='gameTile' id='gt8'></div>
             <div class='gameTile' id='gt9'></div>
         </div>
-        <button id='reset'>Reset</button>
 
     </body>
 </html>

@@ -1,10 +1,27 @@
 * {
     margin: 0 auto;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background-image: url('https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 1000px;
+
+    margin-left: -260px;
+    margin-top: 150px;
+    background-position: center;
+    transform: rotate(-8deg);
 }
 
 h1 {
-    padding: 25px 0px
+    padding: 25px 0px 5px 0px;
+    color: #023047;
+}
+h4 {
+    padding-bottom: 10px;
+    color: #8ecae6
 }
 
 #container {
@@ -13,17 +30,37 @@ h1 {
     height: 300px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    margin-top: 25px;
+
 }
 
 .gameTile {
-    background-color: deepskyblue;
+    background-color: white;
     color: white;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    font-size: 28px;
+    width: 80px;
+    height: 80px;
+    line-height: 95px;
+    font-size: 45px;
+    border: 3px #023047 solid;
 }
 
 .gameTile:hover {
-    background-color: lightblue;
+    background-color: #219ebc;
+}
+
+input {
+    margin: 20px 0px 0px 15px;
+}
+
+button {
+    margin-top: 20px;
+}
+
+#userMessage {
+    font-size: 25px;
+    margin-top: 15px;
+    color: #fb8500;
+}
+label {
+    color: #023047;
 }

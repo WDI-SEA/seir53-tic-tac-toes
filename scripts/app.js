@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
     // on click toggle between xs and os on the gameboard
     let gameTiles = document.querySelectorAll('.gameTile')
-    let user1 = 'O'
-    let user2 = 'X'
+    let user1 = '❌'
+    let user2 = '⭕️'
     let gameOver = ''
     let currentTurn = user1
 
@@ -21,47 +21,47 @@ window.addEventListener('DOMContentLoaded', () => {
     function checkWin() {
          if (gt1.innerText === gt2.innerText && gt2.innerText === gt3.innerText) {
             if (gt1.innerText !== '') {
-                userMessage.innerText = `${gt1.innerText}'s wins`
+                userMessage.innerText = `${gt1.innerText} wins!`
                 currentTurn = gameOver
             }                
         } else if (gt4.innerText === gt5.innerText && gt5.innerText === gt6.innerText) {
             if (gt4.innerText !== '') {
-                userMessage.innerText = `${gt4.innerText}'s wins`
+                userMessage.innerText = `${gt4.innerText} wins!`
                 currentTurn = gameOver
             }
         } else if (gt7.innerText === gt8.innerText && gt8.innerText === gt9.innerText) {
             if (gt7.innerText !== '') {
-                userMessage.innerText = `${gt7.innerText}'s wins`
+                userMessage.innerText = `${gt7.innerText} wins!`
                 currentTurn = gameOver
             }
         } else if (gt1.innerText === gt4.innerText && gt4.innerText === gt7.innerText) {
             if (gt1.innerText !== '') {
-                userMessage.innerText = `${gt1.innerText}'s wins`
+                userMessage.innerText = `${gt1.innerText} wins!`
                 currentTurn = gameOver
             }
         } else if (gt2.innerText === gt5.innerText && gt5.innerText === gt8.innerText) {
             if (gt2.innerText !== '') {
-                userMessage.innerText = `${gt2.innerText}'s wins`
+                userMessage.innerText = `${gt2.innerText} wins!`
                 currentTurn = gameOver
             }
         } else if (gt3.innerText === gt6.innerText && gt6.innerText === gt9.innerText) {
             if (gt3.innerText !== '') {
-                userMessage.innerText = `${gt3.innerText}'s wins`
+                userMessage.innerText = `${gt3.innerText} wins!`
                 currentTurn = gameOver
             }
         } else if (gt1.innerText === gt5.innerText && gt5.innerText === gt9.innerText) {
             if (gt1.innerText !== '') {
-                userMessage.innerText = `${gt1.innerText}'s wins`
+                userMessage.innerText = `${gt1.innerText} wins!`
                 currentTurn = gameOver
             }
         } else if (gt7.innerText === gt5.innerText && gt5.innerText === gt3.innerText) {
             if (gt7.innerText !== '') {
-                userMessage.innerText = `${gt7.innerText}'s wins`
+                userMessage.innerText = `${gt7.innerText} wins!`
                 currentTurn = gameOver
             }
         }
     }
-// check each gt if empty don't do anything. if has content, check to next
+    // check each gt if empty don't do anything. if has content, check to next
     function checkTie () {
         if (gt1.innerText === '') {
         } else if (gt2.innerText === '') {
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (gt9.innerText === '') {
         //do nothing
         } else {
-            userMessage.innerText = `It's a tie`
+            userMessage.innerText = `It's a tie 😑`
             currentTurn = gameOver
         }
     }
@@ -93,49 +93,64 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (currentTurn === user2){
             currentTurn = user1
         }
-        }
+    }
 
-            for (let i = 0; i < gameTiles.length; i++) {
-                gameTiles[i].addEventListener('click', () => {
-                    // if tile is empty, make selection.
-                    // else do nothing
-                    if (gameTiles[i].innerText === "") {
 
-                        // display who's turn it is
-                        userMessage.innerText = `${currentTurn}'s are up next.`
-                        changeCurrentTurn()
+    for (let i = 0; i < gameTiles.length; i++) {
+        gameTiles[i].addEventListener('click', () => {
+        // if tile is empty, make selection.
+        // else do nothing
+            if (gameTiles[i].innerText === "") {
 
-                        
+                // display who's turn it is
 
-            // // see what current letter is of game tile that was clicked
-            // let tile = gameTiles[i].innerText
+                     
 
-            //     //toggle between choices
+                // see what current letter is of game tile that was clicked
+                // let tile = gameTiles[i].innerText
+
+                //toggle between choices
                 
-            // // toggle between whichever letter is current vs x or o
-            // let newPlayStatus = tile === 'X' ? 'O' : 'X'
+                // toggle between whichever letter is current vs x or o
+                // let newPlayStatus = tile === 'X' ? 'O' : 'X'
 
-            // // set innerText of div to be new toggled letter
-                    gameTiles[i].innerText = currentTurn
-                    checkTie()
-                    checkWin()
-                    }
+                // set innerText of div to be new toggled letter
+                gameTiles[i].innerText = currentTurn
+                changeCurrentTurn()  
+                userMessage.innerText = `${currentTurn} is next`
+                checkTie()
+                checkWin()
+            }
         })
     }
     // clears board
     function clearBoard() {
         for (let i = 0; i < gameTiles.length; i++) {
             gameTiles[i].innerText = ''
-            currentTurn = user1
-            userMessage.innerText = `X's start first`
         }
+        currentTurn = user1
+        userMessage.innerText = `${currentTurn} starts first`
     }
+
+    // updates player 1 icon
+    function changeUser1Icon() {
+        user1 = document.querySelector('input[name="user1Icon"]:checked').value
+    }
+    
+    // updates player 2 icon
+    function changeUser2Icon() {
+        user2 = document.querySelector('input[name="user2Icon"]:checked').value
+    }
+
     // adds click functionality to reset button
     let resetButton = document.getElementById('reset')
-    resetButton.addEventListener('click', clearBoard)
-
-
-
+    resetButton.addEventListener('click', () => {
+        changeUser1Icon()
+        changeUser2Icon()
+        clearBoard()
+        console.log(user1 + user2 + currentTurn)
+    })
+    console.log(user1 + user2 + currentTurn)
 })
 
 // create two users
