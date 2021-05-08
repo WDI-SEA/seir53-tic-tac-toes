@@ -48,10 +48,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
    // Click event for tiles. Every tile is X unless already clicked, then 0
    for (let i=0; i < gameTiles.length; i++) {
-       gameTiles[i].addEventListener('click', () => {
+       gameTiles[i].addEventListener('click', (event) => {
            playerTurns++
            // playerTurns= playerTurns + 1
-           console.log(playerTurns + "Player turn 4")
+            event.target.classList.add('noClick')
+           console.log(event.target.classList)
+           // HOW TO CHECK IF CLASSLIST CONTAINS NO CLICK (NEXT STEP)
            // see what current letter is of game tile that was clicked
            let tile = gameTiles[i].innerText
           
