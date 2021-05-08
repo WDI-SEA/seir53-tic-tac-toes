@@ -117,8 +117,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             // // set innerText of div to be new toggled letter
                     gameTiles[i].innerText = currentTurn
-                    checkWin()
                     checkTie()
+                    checkWin()
                     }
         })
     }
