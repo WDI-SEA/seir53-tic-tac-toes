@@ -4,14 +4,20 @@ window.addEventListener("DOMContentLoaded", () => {
     let gameTiles = document.querySelectorAll(".gameTile")
     
     for (let i = 0; i < gameTiles.length; i++) {
-        gameTiles[i].addEventListener("click", () => {
-            turnClick++
-            gameTiles[i].innerText = turnClick % 2 === 0 ? "O" : "X"
-            
+        gameTiles[i].addEventListener("click", (event) => {
+            if (!event.target.classList.contains("clicked")) {
+                turnClick++
+                gameTiles[i].innerText = turnClick % 2 === 0 ? "O" : "X"
+                event.target.classList.add("clicked") 
+                console.log(event.target)
+
+            }
         })
 
     }
 })
+
+
 
 //click toggle x and o board
 //see what letter is of tile clicked
