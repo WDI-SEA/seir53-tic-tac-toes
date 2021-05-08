@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
-   
+   let playerTurns = 0
+
  // ARRAY FOR SQUARES
     let s1 = document.getElementById('one')
     let s2= document.getElementById('two')
@@ -12,27 +13,30 @@ window.addEventListener('DOMContentLoaded', () => {
     let s9= document.getElementById('nine')
 
     const gameSq= [s1,s2,s3,s4,s5,s6,s7,s8]
+    const gameSquareArray= document.querySelectorAll('.gameTile')
+    console.log(`gameSq ${gameSq}`)
+    console.log(`gameSq ${gameSquareArray}`)
 
 // WIN.LOSE.TIE CONDITIONAL
 
-    const xWins= {
-        scenario1 : (s1,s2,s3),
-        scenario2 : (s4,s5,s6),
-        scenario3 : (s7,s8,s9),
-        scenario4 : (s1,s4,s7),
-        scenario5 : (s2,s5,s3),
-        scenario6 : (s3,s6,s9),
-        scenario7 : (s1,s5,s9),
-        scenario8 : (s3,s5,s7)
-    }
+    // const xWins= {
+    //     scenario1 : (s1,s2,s3),
+    //     scenario2 : (s4,s5,s6),
+    //     scenario3 : (s7,s8,s9),
+    //     scenario4 : (s1,s4,s7),
+    //     scenario5 : (s2,s5,s3),
+    //     scenario6 : (s3,s6,s9),
+    //     scenario7 : (s1,s5,s9),
+    //     scenario8 : (s3,s5,s7)
+    // }
 
-    if xWins === true {
-        console.log("X wins! O is oooo so sad");
-    } else if (oWins === true) {
-        console.log("O wins! X is xxxceptionally distraught");
-    } else {
-        console.log("Tie! Everyone's a winner!! kinda..")
-    }
+    // if (xWins === true) {
+    //     console.log("X wins! O is oooo so sad");
+    // } else if (oWins === true) {
+    //     console.log("O wins! X is xxxceptionally distraught");
+    // } else {
+    //     console.log("Tie! Everyone's a winner!! kinda..")
+    // }
    
    
    
@@ -45,12 +49,15 @@ window.addEventListener('DOMContentLoaded', () => {
    // Click event for tiles. Every tile is X unless already clicked, then 0
    for (let i=0; i < gameTiles.length; i++) {
        gameTiles[i].addEventListener('click', () => {
+           playerTurns++
+           // playerTurns= playerTurns + 1
+           console.log(playerTurns + "Player turn 4")
            // see what current letter is of game tile that was clicked
            let tile = gameTiles[i].innerText
           
            // toggle between whichever letter is current vs x or 0
-           let newPlayStatus = tile === "X" ? "O" : "X"
-           
+           let newPlayStatus = playerTurns % 2 === 0 ? "X" : "0"
+           // playerTurns % 2 === 0 ? "X" : "0"
            // set innerText of div to be new toggled letter
            gameTiles[i].innerText = newPlayStatus
        })
