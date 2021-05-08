@@ -1,12 +1,12 @@
 window.addEventListener("DOMContentLoaded", () => {
     
+    let turnClick = 0 
     let gameTiles = document.querySelectorAll(".gameTile")
     
     for (let i = 0; i < gameTiles.length; i++) {
         gameTiles[i].addEventListener("click", () => {
-            let tile = gameTiles[i].innerText
-            let newPlayStatus = tile === "X" ? "O" : "X"
-            gameTiles[i].innerText = newPlayStatus
+            turnClick++
+            gameTiles[i].innerText = turnClick % 2 === 0 ? "O" : "X"
             
         })
 
