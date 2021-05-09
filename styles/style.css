@@ -1,0 +1,33 @@
+body {
+    background-color: darkmagenta;
+}
+*   {
+    margin: 0 auto;
+    text-align: center;
+}
+h1  {
+    padding: 50px 0px 50px 0px;
+}
+
+#container {
+    margin: 0 auto;
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.gameTile {
+    background-color: darkturquoise;
+    color: black;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 25px;
+}
+.gameTile:hover {
+    background-color: greenyellow;
+}
+.gameTile:active {
+    background-color: coral;
+}
