@@ -1,0 +1,79 @@
+* {
+    margin: 0 auto;
+    text-align: center;
+}
+
+body {
+    background-color: #81B29A ;
+}
+
+h1 {
+    padding: 25px 0px;
+    font-family: 'Reggae One', cursive;
+    font-size: 60px;
+}
+
+h2 {
+    font-family: 'Reggae One', cursive;
+    font-size: 30px;
+}
+
+#userMessage {
+    display: none;
+    margin: 20px auto;
+    height: 75px;
+    width: 300px;
+    font-size: 50px;
+    font-family: 'Orelega One', cursive;
+    line-height: 75px;
+    border-image: url(woodimg.jpeg) 14 / 14px;
+    border-style: solid; 
+    background-color: #F4F1DE;
+}
+
+#turnWho {
+    font-family: 'Reggae One', cursive;
+    margin: 20px;
+    font-size: 20px;
+}
+
+#container {
+    margin: 0 auto;
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+} 
+
+.gameTile {
+    background-color: #E07A5F;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 28px;
+    border: #3D405B 2px solid;
+    box-sizing: border-box;
+
+}
+
+.gameTile:hover {
+    background-color: #F4F1DE;
+    cursor: pointer;
+
+}
+ button {
+     margin-top: 30px;
+     display: none;
+     padding: 10px 30px;
+     font-size: 40px;
+     border-radius: 10px;
+     border:2px solid #3D405B;
+     font-family: 'Orelega One', cursive;
+     background-color: #F4F1DE
+ }
+
+ button:hover {
+     cursor: pointer;
+ }
+ 
