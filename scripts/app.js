@@ -14,28 +14,28 @@ window.addEventListener('DOMContentLoaded', () => {
     gameTiles[i].addEventListener('click', (event) => {
       // see what current letter is of game tile that was clicked
       //prevent cell from being clicked if alredy filled
-      totalMoves++;
+  
 
-      // let tile = gameTiles[i].innerText;
-      let tile = event.target.innerText;
-      console.log(tile)
-
-      let newPlayStatus = tile === "X" // true or false
-
-      event.target.innerText = totalMoves % 2 === 0 ? "X" : "O"
-
-
+      // let newPlayStatus = tile === "X" // true or false
 
      
+
+
     //  if (event.target.className != "gameTile clicked") {
     //     event.target.innerText = nextMove
     //     nextMove = nextMove === "X" ? "O" : "X"
+
+    if (!event.target.classList.contains('clicked')) {
+        event.target.className += " clicked";
+        totalMoves++;
+        event.target.innerText = totalMoves % 2 === 0 ? "X" : "O" // alternate xs and os
+      }
 
        //add class to cell that was clicked
     //    event.target.className = "gameTile clicked" 
     //Upon marking of an individual cell, use JavaScript to add a class to each cell to display the separate players.
     const message = document.getElementById('userMessage');
-    newPlayStatus === "X" ? message.innerText = "Player 1 turn" : message.innerText = "Player 2 turn"; 
+    // newPlayStatus === "X" ? message.innerText = "Player 1 turn" : message.innerText = "Player 2 turn"; 
     //   }
     // )}
   }
