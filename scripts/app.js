@@ -24,14 +24,28 @@ window.addEventListener("DOMContentLoaded", () => {
             gameTiles[i].addEventListener("click", (event) => {
                 // dont allow players to change an already clicked button
                 if (event.target.className != "gameTile clicked") {
+                    // add class to cell that was clicked
+                    event.target.className = "gameTile clicked"
+
+                    // set X or O on clicked div
+                    event.target.innerText = nextMove
+
+                    // setup a 2d array of the board
+                    let tilesIter = 0
+                    for (let i = 0; i < 3; i++) {
+                        for (let j = 0; j < 3; j++) {
+                            boardArr[i][j] = gameTiles[tilesIter].innerText
+                            tilesIter += 1
+                        }
+                    }
+
                     // track and display rounds
                     roundNum++
                     roundSpan.innerText = roundNum
-                    // set X or O on clicked div
-                    event.target.innerText = nextMove
+                    
                     // check if player who just went won
-                    winningPlayer = gameState(nextMove)
-                    if (winningPlayer) {
+                    winningPlayer = checkWinner()
+                    if (winningPlayer === "X" || winningPlayer === "O") {
                         // found winner
                         gameEnd(`PLAYER ${winningPlayer} WINS!`)
                         // update player score
@@ -46,85 +60,72 @@ window.addEventListener("DOMContentLoaded", () => {
                         document.getElementById(`playerOScore`).innerText = pOScore
                         return
                     }
+
                     // change nextMove to X or O depending on what was just set
                     nextMove = nextMove === "X" ? "O" : "X" 
                     // update the span that states who's turn it is
                     currentPlayer.innerText = `It's ${nextMove}'s turn`
 
-                    //TEST - if O's turn, have CPU play
+                    // if O's turn, have CPU play
                     nextMove === "O" ? cpuPlayer() : console.log("Not CPU's Turn")
                 }
-                // add class to cell that was clicked
-                event.target.className = "gameTile clicked"
             })
         }
     }
 
-    function gameState(lastPlay) {
-        // setup 2D array
-        let winCheck = []
-        let tilesIter = 0
-        // setup a 2d array of the board
+    // check if the 3 positions passed are the same value AND not blank values
+    function matching(val0, val1, val2) {
+        return val0 == val1 && val1 == val2 && val0 != '';
+    }
+    
+    // called to check if there is a winner, tie, or neither
+    function checkWinner() {
+        let winner = null
+        
+        // check horizontal for winner
+        for (let i = 0; i < 3; i++) {
+            if (matching(boardArr[i][0], boardArr[i][1], boardArr[i][2])) {
+            winner = boardArr[i][0]
+            }
+        }
+        
+        // check vertical for winner
+        for (let i = 0; i < 3; i++) {
+            if (matching(boardArr[0][i], boardArr[1][i], boardArr[2][i])) {
+            winner = boardArr[0][i]
+            }
+        }
+        
+        // check diagonal for winner
+        if (matching(boardArr[0][0], boardArr[1][1], boardArr[2][2])) {
+            winner = boardArr[0][0]
+        }
+        if (matching(boardArr[2][0], boardArr[1][1], boardArr[0][2])) {
+            winner = boardArr[2][0]
+        }
+        
+        let openSpots = 0
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                boardArr[i][j] = gameTiles[tilesIter].innerText
-                tilesIter += 1
+            if (boardArr[i][j] == '') {
+                openSpots++
+            }
             }
         }
-        // check rows
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                winCheck.push(boardArr[i][j])
-                if (j === 2) {
-                    if (winCheck.every( x => x === lastPlay )) {
-                        console.log(`${lastPlay} wins in a row`)
-                        return lastPlay
-                    }
-                    winCheck = []
-                }
-            }
-        }
-        // check cols
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                winCheck.push(boardArr[j][i])
-                if (j === 2) {
-                    if (winCheck.every( x => x === lastPlay )) {
-                        console.log(`${lastPlay} wins in a col`)
-                        return lastPlay
-                    }
-                    winCheck = []
-                }
-            }
-        }
-        // check diag top left to bottom right
-        for (let i = 0; i < 3; i++) {
-            winCheck.push(boardArr[i][i])
-            if (i === 2) {
-                if (winCheck.every( x => x === lastPlay )) {
-                    console.log(`${lastPlay} wins in a dia`)
-                    return lastPlay
-                }
-                winCheck = []
-            }
-        }
-        // check diag top right to bottom left
-        for (let i = 0, j = 2; i < 3; i++, j--) {
-            winCheck.push(boardArr[i][j])
-            if (i === 2) {
-                if (winCheck.every( x => x === lastPlay )) {
-                    console.log(`${lastPlay} wins in a dia`)
-                    return lastPlay
-                }
-                winCheck = []
-            }
+        
+        if (winner == null && openSpots == 0) {
+            return 'tie'
+        } else {
+            return winner
         }
     }
 
     function gameEnd(endMessage) {
+        // when game ends have all tiles show as clicked so they are no longer clickable by player
         for (let i = 0; i < gameTiles.length; i++) {
             gameTiles[i].className = "gameTile clicked"
         }
+        // display winner text
         currentPlayer.innerText = endMessage
     }
 
@@ -145,16 +146,15 @@ window.addEventListener("DOMContentLoaded", () => {
             gameTiles[i].innerText = ""
         }
 
+        // reset messages under the board
         currentPlayer.innerText = "It's X's turn."
-        roundSpan.innerText = "1"
+        roundSpan.innerText = roundNum
 
         // restart game
         gameStart()
     } 
 
     function cpuPlayer() {
-        // TODO: Add AI logic for making moves
-
         /*
         // START OF BASIC AI
         // basic AI that picks a random spot on the board
@@ -167,30 +167,30 @@ window.addEventListener("DOMContentLoaded", () => {
         // END OF BASIC AI
         */
         
-        // TEST - try following along with setting up AI
-        let bestScore = -Infinity;
-        let move;
+        // since cpu is maximizing player set bestScore to -∞
+        let bestScore = -Infinity
+        let move
+        
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-            // Is the spot available?
-            if (boardArr[i][j] == "") {
-                boardArr[i][j] = "O";
-                let score = minimax(boardArr, 0, false);
-                boardArr[i][j] = "";
-                // console.log(score)
-                // console.log(bestScore)
-                if (score > bestScore) {
-                bestScore = score;
-                move = { i, j };
+                // check if spot is available
+                if (boardArr[i][j] == "") {
+                    // if available set to O, run the minimax algo, blank the spot on the board
+                    boardArr[i][j] = "O"
+                    let score = minimax(boardArr, 0, false)
+                    boardArr[i][j] = ""
+                    if (score > bestScore) {
+                        bestScore = score
+                        move = { i, j }
+                    }
                 }
-            }
             }
         }
         // this is where the AI makes it's move
-        // boardArr[move.i][move.j] = "O";
         gameTiles[ ((move.i * 3) + move.j) ].click()
     }
 
+    // used to determine if the move will result in a better score for X, O, or if it will be a tie
     let scores = {
         X: -1,
         O: 1,
@@ -198,40 +198,39 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function minimax(board, depth, isMaximizing) {
-        let result = gameState(nextMove);
+        let result = checkWinner()
         if (result !== null) {
-            console.log(result) // WHAT ARE RESULTS?
-            return scores[result];
+            return scores[result]
         }
       
         if (isMaximizing) {
-          let bestScore = -Infinity;
+          let bestScore = -Infinity
           for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
               // Is the spot available?
               if (board[i][j] == '') {
-                board[i][j] = "O";
-                let score = minimax(board, depth + 1, false);
-                board[i][j] = '';
-                bestScore = max(score, bestScore);
+                board[i][j] = "O"
+                let score = minimax(board, depth + 1, false)
+                board[i][j] = ''
+                bestScore = Math.max(score, bestScore)
               }
             }
           }
-          return bestScore;
+          return bestScore
         } else {
-          let bestScore = Infinity;
+          let bestScore = Infinity
           for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
               // Is the spot available?
               if (board[i][j] == '') {
-                board[i][j] = "X";
-                let score = minimax(board, depth + 1, true);
-                board[i][j] = '';
-                bestScore = min(score, bestScore);
+                board[i][j] = "X"
+                let score = minimax(board, depth + 1, true)
+                board[i][j] = ''
+                bestScore = Math.min(score, bestScore)
               }
             }
           }
-          return bestScore;
+          return bestScore
         }
       }
 
