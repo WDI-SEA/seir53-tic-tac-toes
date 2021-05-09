@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
-    // TESTING
+    // add event listener for reset button
     document.getElementById("reset").addEventListener("click", gameReset)
-    // TESTING
 
     // setup variables that will be needed globally
     let gameTiles = document.querySelectorAll(".gameTile")
@@ -12,7 +11,8 @@ window.addEventListener("DOMContentLoaded", () => {
     let roundNum = 1
     let boardArr = [["", "", ""], ["", "", ""], ["", "", ""]]
 
-    // variables to track X and O's scores but not reset with reset button
+    // variables to track X and O's scores
+    // only resets with page refresh
     let pXScore = 0
     let pOScore = 0
     
@@ -126,7 +126,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function gameReset() {
-        // TODO: Reset the game without refreshing the page
         // reset starting variables
         gameTiles = document.querySelectorAll(".gameTile")
         nextMove = "X"
@@ -148,18 +147,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // restart game
         gameStart()
-    }
-    
-    // BONUS
-
-    // track player's wins over time
-
-    // add simple AI to have CPU vs Player
-    
-    // add time delay for AI moves to make it more "human"
-
-    // SUPER BONUS
-    // add AI that can win
-
-    
+    } 
 })
