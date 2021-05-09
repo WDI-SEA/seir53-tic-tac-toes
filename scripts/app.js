@@ -1,11 +1,11 @@
 window.addEventListener('DOMContentLoaded', () => {
-    // on click toggle between xs and os on the gameboard
+
     let gameTiles = document.querySelectorAll('.gameTile')
     let user1 = '❌'
     let user2 = '⭕️'
     let gameOver = ''
     let currentTurn = user1
-
+    let turnCounter = 0
     let gt1 = document.getElementById('gt1')
     let gt2 = document.getElementById('gt2')
     let gt3 = document.getElementById('gt3')
@@ -15,9 +15,32 @@ window.addEventListener('DOMContentLoaded', () => {
     let gt7 = document.getElementById('gt7')
     let gt8 = document.getElementById('gt8')
     let gt9 = document.getElementById('gt9')
+    let userMessage = document.getElementById('userMessage')
 
-    userMessage = document.getElementById('userMessage')
+    // for each game tile add click event listener
+    for (let i = 0; i < gameTiles.length; i++) {
+        gameTiles[i].addEventListener('click', () => {
+        // if tile is empty, make selection.
+        // else do nothing
+            if (gameTiles[i].innerText === "") {
 
+                // set text of clicked tile to be user icon
+                gameTiles[i].innerText = currentTurn
+                changeCurrentTurn()  
+                userMessage.innerText = `${currentTurn} is next`
+                // check for tie
+                if (turnCounter === 9) {
+                    userMessage.innerText = `It's a tie 😑`
+                    currentTurn = gameOver
+                }
+                checkWin()
+            }
+        })
+    }
+
+    // check for win
+    // if any of the 8 win conditions are met
+    // declare winner and end game
     function checkWin() {
          if (gt1.innerText === gt2.innerText && gt2.innerText === gt3.innerText) {
             if (gt1.innerText !== '') {
@@ -61,68 +84,18 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    // check each gt if empty don't do anything. if has content, check to next
-    function checkTie () {
-        if (gt1.innerText === '') {
-        } else if (gt2.innerText === '') {
-        //do nothing
-        } else if (gt3.innerText === '') {
-        //do nothing
-        } else if (gt4.innerText === '') {
-        //do nothing
-        } else if (gt5.innerText === '') {
-        //do nothing
-        } else if (gt6.innerText === '') {
-        //do nothing
-        } else if (gt7.innerText === '') {
-        //do nothing
-        } else if (gt8.innerText === '') {
-        //do nothing
-        } else if (gt9.innerText === '') {
-        //do nothing
-        } else {
-            userMessage.innerText = `It's a tie 😑`
-            currentTurn = gameOver
-        }
-    }
 
-    // change current turn from user 1 to user 2
+    // change current turn from user 1 to user 2 and add 1 to the turn counter
     function changeCurrentTurn () {
         if (currentTurn === user1) {
-            currentTurn = user2
+            currentTurn = user2;
+            turnCounter++;
         } else if (currentTurn === user2){
-            currentTurn = user1
+            currentTurn = user1;
+            turnCounter++;
         }
     }
 
-
-    for (let i = 0; i < gameTiles.length; i++) {
-        gameTiles[i].addEventListener('click', () => {
-        // if tile is empty, make selection.
-        // else do nothing
-            if (gameTiles[i].innerText === "") {
-
-                // display who's turn it is
-
-                     
-
-                // see what current letter is of game tile that was clicked
-                // let tile = gameTiles[i].innerText
-
-                //toggle between choices
-                
-                // toggle between whichever letter is current vs x or o
-                // let newPlayStatus = tile === 'X' ? 'O' : 'X'
-
-                // set innerText of div to be new toggled letter
-                gameTiles[i].innerText = currentTurn
-                changeCurrentTurn()  
-                userMessage.innerText = `${currentTurn} is next`
-                checkTie()
-                checkWin()
-            }
-        })
-    }
     // clears board
     function clearBoard() {
         for (let i = 0; i < gameTiles.length; i++) {
@@ -148,14 +121,12 @@ window.addEventListener('DOMContentLoaded', () => {
         changeUser1Icon()
         changeUser2Icon()
         clearBoard()
-        console.log(user1 + user2 + currentTurn)
+        turnCounter = 0
     })
-    console.log(user1 + user2 + currentTurn)
 })
 
 // create two users
 // alternating between users
-
 // A user should be able to click on different squares to make a move.
 // Every click will alternate between marking an X and O
 // Upon marking of an individual cell, use JavaScript to add an X or O to the cell, according to whose turn it is.
