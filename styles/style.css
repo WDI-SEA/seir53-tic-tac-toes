@@ -13,16 +13,22 @@ h1 {
     width: 300px;
     height: 300px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); 
+    column-gap: 5px;
+    row-gap: 5px;
 }
 
 .gameTile {
-    background-color: deepskyblue;
+    background: linear-gradient(to right, #ff47a1 0%, #ff9f4d 100%);
     color: white;
     width: 100px;
     height: 100px;
     line-height: 100px;
     font-size: 28px;
+}
+
+button {
+    margin-top: 50px;
 }
 
 .gameTile:hover {
@@ -31,4 +37,8 @@ h1 {
 
 .noClick {
     pointer-events: none;
+}
+
+#one {
+   outline-color: black;
 }
