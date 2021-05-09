@@ -4,7 +4,12 @@
 }
 
 h1 {
-    padding: 25px 0;
+    padding: 25px 0 0 0;
+}
+
+#userScores p {
+    display: inline-block;
+    margin: 0 15px;
 }
 
 #container {
@@ -26,4 +31,8 @@ h1 {
 
 .gameTile:hover {
     background-color: lightblue;
+}
+
+body>div {
+    margin: 15px;
 }
