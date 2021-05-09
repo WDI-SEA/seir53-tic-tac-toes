@@ -52,16 +52,21 @@ window.addEventListener('DOMContentLoaded', () => {
            playerTurns++
            // playerTurns= playerTurns + 1
             event.target.classList.add('noClick')
-           console.log(event.target.classList)
+          
            // HOW TO CHECK IF CLASSLIST CONTAINS NO CLICK (NEXT STEP)
+            // if no click then "O"
+           //  let noMas = document.getElementsByClassName('noClick')
+             //noMas === "O" ? "O" : "X"  
+             
            // see what current letter is of game tile that was clicked
-           let tile = gameTiles[i].innerText
+           //let tile = gameTiles[i].innerText
           
            // toggle between whichever letter is current vs x or 0
            let newPlayStatus = playerTurns % 2 === 0 ? "X" : "0"
            // playerTurns % 2 === 0 ? "X" : "0"
            // set innerText of div to be new toggled letter
            gameTiles[i].innerText = newPlayStatus
+
        })
    }
    
@@ -73,7 +78,8 @@ window.addEventListener('DOMContentLoaded', () => {
     clear.addEventListener('click', () => {
         for (let v=0; v < gameTileList.length; v++) {
             let tile =gameTileList[v].innerText
-            gameTileList[v].innerText = " "
+            gameTileList[v].innerText = " ";
+            gameTiles[v].classList.remove('noClick')
          }
     })
 

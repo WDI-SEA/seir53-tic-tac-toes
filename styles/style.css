@@ -28,3 +28,7 @@ h1 {
 .gameTile:hover {
     background-color: lightblue;
 }
+
+.noClick {
+    pointer-events: none;
+}
