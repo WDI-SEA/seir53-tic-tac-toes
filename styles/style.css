@@ -1,0 +1,44 @@
+*{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+h1{
+    padding: 25px 0px 25px 0px;
+    
+}
+#container{
+    display: grid;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 8px;
+}
+.grid-item{
+    background-color: seagreen;
+    color: seashell;
+    width: 100px;
+    height: 100px;
+    /*center text vertically*/
+    line-height: 100px;
+    font-size: 28px;
+    
+}
+.grid-item:hover {
+    background-color: skyblue;
+}
+
+h3{
+    /* background-color: #a6c48a; */
+    width: 400px;
+    font-size: 28px;
+    
+}
+button{
+    width: 250px;
+    padding: 5px;
+}
