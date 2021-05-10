@@ -1,0 +1,45 @@
+*{
+    margin: 0 auto;
+    text-align: center
+}
+
+body {
+    background-color: pink;
+}
+
+
+
+h1{
+    padding: 25px 0px 25px 0px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#container {
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+}
+
+.gameTile {
+    border: 2px solid black;
+    border-radius: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 2.5px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 28px;
+
+}
+
+.gameTile:hover {
+    background-color: lightblue;
+}
+
+#whosTurn {
+    padding-top: 50px;
+    
+}
