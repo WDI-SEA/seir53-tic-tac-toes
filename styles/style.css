@@ -3,8 +3,13 @@
     text-align: center;
 }
 
+body {
+    background: black;
+}
+
 h1 {
     padding: 25px 0 25px 0;
+    color: white;
 }
 
 #container {
@@ -37,8 +42,4 @@ button {
 
 .noClick {
     pointer-events: none;
-}
-
-#one {
-   outline-color: black;
 }

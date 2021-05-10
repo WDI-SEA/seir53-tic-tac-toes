@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // WIN.LOSE.TIE CONDITIONAL
 
-    // const xWins= {
+    // const win= {
     //     scenario1 : (s1,s2,s3),
     //     scenario2 : (s4,s5,s6),
     //     scenario3 : (s7,s8,s9),
@@ -30,9 +30,9 @@ window.addEventListener('DOMContentLoaded', () => {
     //     scenario8 : (s3,s5,s7)
     // }
 
-    // if (xWins === true) {
+    // if (win === true  "X") {
     //     console.log("X wins! O is oooo so sad");
-    // } else if (oWins === true) {
+    // } else if (win === true) : 'O' {
     //     console.log("O wins! X is xxxceptionally distraught");
     // } else {
     //     console.log("Tie! Everyone's a winner!! kinda..")
