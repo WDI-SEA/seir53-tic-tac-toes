@@ -1,0 +1,14 @@
+// user to click on different squares to make move
+
+// players
+
+// logic for alternate users
+
+// clear event listeners (or create new player without)
+
+
+
+
+
+
+

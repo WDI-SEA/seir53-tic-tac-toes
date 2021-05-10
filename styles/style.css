@@ -1,0 +1,103 @@
+* {
+    font-family: 'Inconsolata', monospace;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body {
+    background-image: url(/img/gabriel-h73jxsQwecc-unsplash.jpg);
+    background-size: cover;
+}
+
+
+h1 {
+    padding: 20px 0px;
+    font-size: 3em;
+}
+
+#goth {
+    font-family: 'Creepster', cursive;
+    font-size: 3.5em;
+}
+
+button {
+    font-family: 'Creepster', cursive;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 200px;
+    height: 50px;
+    padding: 25px;
+    border-style: none;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: yellowgreen;
+    color: black;
+}
+
+#player {
+    font-family: 'Inconsolata', monospace;
+    padding-bottom: 20px;
+    font-size: 25px;
+}
+
+#quote {
+    font-family: 'Inconsolata', monospace;
+    padding: 10px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    background-color: black;
+    color: white;
+    width: 440px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#container {
+    margin: 0 auto;
+    display: grid;
+    width: 450px;
+    height: 450px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.gameTile {
+    border: 1px solid rgb(65, 65, 65);
+    color: black;
+    width: 150px;
+    height: 150px;
+    line-height: 100px;
+    font-size: 50px;
+}
+
+.gameTile:hover{
+    background-color: white;
+}
+
+/* .purple {
+    background-color: purple;
+}
+
+.green {
+    background-color: yellowgreen;
+} */
+
+.robert-smith{   
+    background-image: url(/img/noun_robert\ smith_2021253\ \(2\).png);
+    background-size: contain;
+    background-color: white;
+}
+
+.peter-murphy{
+    background-image: url(/img/noun_peter\ murphy_2021255\ \(2\).png);
+    background-size: contain;
+    background-color: white;
+}
