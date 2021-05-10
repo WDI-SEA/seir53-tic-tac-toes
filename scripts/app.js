@@ -1,15 +1,32 @@
 window.addEventListener("DOMContentLoaded", () => {
+    let turnClick = 0;
+    let xPlayer = {
+        selects: [],
+    }
+    let oPlayer = {
+        selects: [],
+    }
     const winStates = [
-        ["#0", "#1", "#2"],
-        ["#3", "#4", "#5"],
-        ["#6", "#7", "#8"],
-        ["#0", "#3", "#6"],
-        ["#1", "#4", "#7"],
-        ["#2", "#5", "#8"],
-        ["#0", "#4", "#8"],
-        ["#2", "#4", "#6"]
+        ["0", "1", "2"],
+        ["3", "4", "5"],
+        ["6", "7", "8"],
+        ["0", "3", "6"],
+        ["1", "4", "7"],
+        ["2", "5", "8"],
+        ["0", "4", "8"],
+        ["2", "4", "6"]
     ]
-    let turnClick = 0 
+    let cellStates = {
+        0: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false,
+    }
     let gameTiles = document.querySelectorAll(".gameTile")
     let butOn = document.querySelector("#reSwitch");
     let alertWindow = document.querySelector(".alerty");
@@ -21,31 +38,109 @@ window.addEventListener("DOMContentLoaded", () => {
             if (!event.target.classList.contains("clicked")) {
                 turnClick++
                 gameTiles[i].innerText = turnClick % 2 === 0 ? "🍈" : "🍋"
-                alertWindow.innerText = turnClick % 2 === 0 ? "Line some Lemons!" : "Make a move, Melon!"
                 event.target.classList.add("clicked") 
-
+                
             }
         })
+        function cellClick(e) {
+            let choice = e.target.id;
+            if (!cellStates[choice]) {
+                if (!turnClick % 2 === 0) {
+                    cellStates[choice] = true;
+                    xPlayer.selects.push(choice);
+                    e.target.classList.add("xSelect");
+                    evaluateCombinations();
+                } else if (turnClick % 2 === 0) {
+                    cellStates[choice] = true;
+                    oPlayer.selects.push(choice);
+                    e.target.classList.add("oSelect");
+                    evaluateCombinations();
+                }
+            } 
+        }
         
     }
+    function eval() {
+        if (turnClick == "0") {
+            for (let i = 0; i < winStates.length; i++) {
+                let winningCombo = winStates[i];
+                let match = 0;
+                for (let j = 0; j < winningCombo.length; j++) {
+                    if (xPlayer.selects.includes(winningCombo[j])) {
+                        match++;
+                    }
+                    if (match === 3) {
+                        alertWindow.innerText = "player X winz!";
+                    }
+                }
+            }
+        } else {
+            for (let i = 0; i < winStates.length; i++) {
+                let winningCombo = winStates[i];
+                let match = 0;
+                for (let j = 0; j < winningCombo.length; j++) {
+                    if (oPlayer.selects.includes(winningCombo[j])) {
+                        match++;
+                    }
+                    if (match === 3) {
+                        alertWindow.innerText = "player O winz!"
+                    }
+                }
+            }
+        }
+        if (Object.values(cellStates).filter(cell => cell).length > 8) {
+            gameDraw();
+        }
+        else {
+            changeTurn();
+        }
+    }
+    function changeTurn() {
+        if (!turnClick % 2 === 0) {
+            alertWindow.innerText = "oh my! it's O's turn."
+        } else {
+            alertWindow.innerText = "x gonna give it to ya."
+        }
+    }
+    
+    function gameDraw() {
+        alertWindow.innerText = "tis a draw!";
+        for (let state in cellStates) {
+            cellStates[state] = true;
+        }
+    }
+    
     butOn.addEventListener("click", () =>{
         for (let i = 0; i < gameTiles.length; i++) {
             gameTiles[i].classList.remove("clicked");
             gameTiles[i].innerText = "";
             turnClick = "0";
-            alertWindow.innerText = "Welcome to lemonLines!"
-        }
-    
-    })
-    // for (let i = 0; i < winStates.length; i++)
-    //     if () {
+    }})
+}
+
+
+// for (let i = 0; i < winStates.length; i++)
+//     if () {
     //         alertWindow.innerText = "Lemons successfully Lined! Lemons win!"
     //     } else {
-    //         alertWindow.innerText = "This isn't melonMedian! Lemons lose!"
-    //     }
+        //         alertWindow.innerText = "This isn't melonMedian! Lemons lose!"
+        //     }
+           
+        
+/*
+let onePlayer = document.getElementById("player1");
+let twoPlayer = document.getElementById("player2");
 
-})    
+----- Game Logic Variables -----
 
+
+
+
+
+
+
+
+*/
 /*button.onclick = (event2) => {
     event2.target.gameTiles.classList.remove("clicked");
     console.log(event2.target)
@@ -112,4 +207,4 @@ for (let i = 0; i < winStates.length; i++) {
 }
 }
 /!\ copy paster /!\
-*/
+*/)
