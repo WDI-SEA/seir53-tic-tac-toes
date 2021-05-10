@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid black;
+  font-family: 'Space Mono', monospace;
+}
+body {
+  background-color: black;
+  color: greenyellow;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 70%;
+}
+
+.header {
+  display: block;
+  margin-top: 75px 0px 25px 0px;
+  height: 75px;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  width: 100%;
+
+  border: 1px solid white;
+}
+
+.gameData {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  height: 40px;
+  font-size: 23px;
+  margin-bottom: 16px;
+}
+
+#gameboard {
+  margin-top: 10px;
+  display: grid;
+  width: 450px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.box {
+  /* border: 1px solid honeydew; */
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+.box:hover {
+  background-color: rgb(24, 24, 24);
+}
+
+#restartBtn {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  height: 35px;
+  padding-top: 8px;
+  /* border: 1px solid white; */
+}
+
+button {
+  background-color: black;
+  color: rgb(136, 201, 38);
+  border: 1px solid rgb(136, 201, 38);
+  padding: 2px 7px;
+}
+
+button:hover {
+  background-color: #303030;
+  color: greenyellow;
+}
+
+h1 {
+  font-size: 55px;
+}
+
+.topL {
+  border-right: 3px solid greenyellow;
+  border-bottom: 3px solid #adff2f;
+}
+.topM {
+  /* border-right:3px solid yellow; */
+  border-bottom: 3px solid greenyellow;
+}
+.botR {
+  /* border-right:3px solid yellow; */
+  border-right: 3px solid greenyellow;
+}
+.botT {
+  /* border-right:3px solid yellow; */
+  border-top: 3px solid greenyellow;
+}
+.topB {
+  /* border-right:3px solid yellow; */
+  border-bottom: 3px solid greenyellow;
+}
