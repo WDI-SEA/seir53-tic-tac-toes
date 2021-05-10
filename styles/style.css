@@ -33,7 +33,12 @@ h1 {
 }
 
 button {
-    margin-top: 50px;
+    margin-top: 30px;
+}
+
+#playerOne, #playerTwo {
+    display: inline;
+    margin: 50px 80px 20px 95px;
 }
 
 .gameTile:hover {

@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
           
            // toggle between whichever letter is current vs x or 0
            let newPlayStatus = playerTurns % 2 === 0 ? "X" : "0"
-           // playerTurns % 2 === 0 ? "X" : "0"
+           
            // set innerText of div to be new toggled letter
            gameTiles[i].innerText = newPlayStatus
 
