@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // for each game tile add click event listener
     for (let i = 0; i < gameTiles.length; i++) {
-        gameTiles[i].addEventListener('click', () => {
+    gameTiles[i].addEventListener('click', () => {
         // if tile is empty, make selection.
         // else do nothing
             if (gameTiles[i].innerText === "") {
@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 gameTiles[i].innerText = currentTurn
                 changeCurrentTurn()  
                 userMessage.innerText = `${currentTurn} is next`
+                
                 // check for tie
                 if (turnCounter === 9) {
                     userMessage.innerText = `It's a tie 😑`
@@ -96,6 +97,15 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // adds click functionality to reset button
+    let resetButton = document.getElementById('reset')
+    resetButton.addEventListener('click', () => {
+        changeUser1Icon()
+        changeUser2Icon()
+        clearBoard()
+        turnCounter = 0
+    })
+    
     // clears board
     function clearBoard() {
         for (let i = 0; i < gameTiles.length; i++) {
@@ -114,13 +124,4 @@ window.addEventListener('DOMContentLoaded', () => {
     function changeUser2Icon() {
         user2 = document.querySelector('input[name="user2Icon"]:checked').value
     }
-
-    // adds click functionality to reset button
-    let resetButton = document.getElementById('reset')
-    resetButton.addEventListener('click', () => {
-        changeUser1Icon()
-        changeUser2Icon()
-        clearBoard()
-        turnCounter = 0
-    })
 })

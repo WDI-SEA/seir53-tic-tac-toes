@@ -7,11 +7,9 @@
 body {
     background-image: url('https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: 1000px;
 
     margin-left: -260px;
-    margin-top: 150px;
     background-position: center;
     transform: rotate(-8deg);
 }
