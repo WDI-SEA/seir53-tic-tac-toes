@@ -1,8 +1,8 @@
 window.addEventListener("DOMContentLoaded", () =>{
 
-let winner = document.querySelector("#winner")
-let gameOver = true
-let totalNumOfTurns = 0
+    let winner = document.querySelector("#winner")
+    let gameOver = true
+    let totalNumOfTurns = 0
 
     let sq1 = document.querySelector("#one")
     let sq2 = document.querySelector("#two")
@@ -37,23 +37,40 @@ let totalNumOfTurns = 0
         //7 across
         (sq7.innerText != "" && sq7.innerText === sq8.innerText && sq7.innerText === sq9.innerText)){
              
+            //print the winner name (player that last clicked)
             winner.innerText = (userMessage.innerText +` is the winner`)
             
-            
+            //gameOver makes it so that no tiles can be clicked
             gameOver = true
+
+            //log turns if no win
         }else {
             console.log("no wins yet")
+
             let i = 0
+
             for(const item of gameTileList){
+
+                //if any tiles are blank and win was not triggered, keep playing
                 if (item.innerText === ""){
-                    // console.log("in if loop item is ''")
                     break
+
+
+
+
+                // this counts to see how many tiles have been clicked, if 9, 
+                // then no more can be played, and nobody has won
+
                 }else if(item != ""){
-                    // console.log("not empty string, adding to 9")
+                    
                     i++
+
                     if(i===9){
+
                         winner.innerText = "Tie Game!"
+
                         gameOver = true
+
                         // alert("Game over, Tie")
                    }
 
@@ -61,19 +78,29 @@ let totalNumOfTurns = 0
            }
             
         }
-    }
-    //win funct
+    }//end of win funct
 
 
-    //Start game
+
+
+
+    //Start game button
     let userMessage = document.querySelector("#userMessage")
     let startButton = document.querySelector("#startButton")
     
     startButton.addEventListener("click", () =>{
+
+        //on click goes through list and clears the board and messages, 
+        //changes gameOver to false, and display player turn
+
         for (let i=0; i<gameTileList.length; i++){
+
             gameTileList[i].innerText = ""}
+
         gameOver = false
+
         userMessage.innerText="👣 Turn" 
+
         winner.innerText = ""
         
     })
@@ -82,10 +109,9 @@ let totalNumOfTurns = 0
     
 
 
-    // console.log("hello world")
-    //toggle between x and 0 on game board
 
-    // let gameTiles = document.querySelectorAll(".grid-item")
+
+    
 
     // console.log(gameTiles[0])
     
@@ -95,8 +121,12 @@ let totalNumOfTurns = 0
 
 
             // If winner, game over. no more tiles can be played
+
+            //if statement to make sure tiles that are not blank cant be clicked
+            // && that the game is not over
+
             if (gameTileList[i].innerText == "" && gameOver == false){
-                console.log(gameTileList[i])
+                // console.log(gameTileList[i])
 
                
 
@@ -135,7 +165,7 @@ let totalNumOfTurns = 0
                 // console.log("Player2")
                 }else{
                     
-                    console.log(userMessage.innerText)
+                    // console.log(userMessage.innerText)
                     gameTileList[i].innerText = "👣"
                     winCheck()
                     
@@ -144,8 +174,7 @@ let totalNumOfTurns = 0
                         userMessage.innerText = ""
                     }
                 }
-                //Adding event to try and disable tile after click
-                //   :(
+                
             }
         //
         })   
