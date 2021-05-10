@@ -39,6 +39,9 @@ let winCombinations =[
     function handleClick(e){
         const tile = e.target
         let currentClass = circleTurn ? oClass : xClass
+        if(tile.classList.contains(xClass) || tile.classList.contains(oClass)){
+            return
+        }
         markTile(tile, currentClass)
         if(checkWin(currentClass)){
             endGame(false)
