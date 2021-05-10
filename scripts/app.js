@@ -43,6 +43,10 @@ window.addEventListener("DOMContentLoaded", () => {
     
     for (let i = 0; i < gameTiles.length; i++) {
         const gameTile = gameTiles[i]
+
+        playAgain.addEventListener("click", () => {
+            window.location.reload()
+        })
         
         gameTile.addEventListener("click", () => {
             if (message.innerText !== "" ||
