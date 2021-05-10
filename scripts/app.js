@@ -30,38 +30,54 @@ window.addEventListener("DOMContentLoaded", () => {
     let gameTiles = document.querySelectorAll(".gameTile")
     let butOn = document.querySelector("#reSwitch");
     let alertWindow = document.querySelector(".alerty");
-    // let xPlayer = 
-    // let oPlayer =
     
+    butOn.addEventListener("click", () =>{
+        for (let i = 0; i < gameTiles.length; i++) {
+            gameTiles[i].classList.remove("clicked", "xSelect", "oSelect");
+            gameTiles[i].innerText = "";
+            turnClick = "0";
+        }})
     for (let i = 0; i < gameTiles.length; i++) {
         gameTiles[i].addEventListener("click", (event) => {
             if (!event.target.classList.contains("clicked")) {
                 turnClick++
                 gameTiles[i].innerText = turnClick % 2 === 0 ? "🍈" : "🍋"
                 event.target.classList.add("clicked") 
-                
-            }
-        })
-        function cellClick(e) {
-            let choice = e.target.id;
-            if (!cellStates[choice]) {
-                if (!turnClick % 2 === 0) {
-                    cellStates[choice] = true;
-                    xPlayer.selects.push(choice);
-                    e.target.classList.add("xSelect");
-                    evaluateCombinations();
-                } else if (turnClick % 2 === 0) {
-                    cellStates[choice] = true;
-                    oPlayer.selects.push(choice);
-                    e.target.classList.add("oSelect");
-                    evaluateCombinations();
+                let choice = event.target.id;
+                if (!cellStates[choice]) {
+                    if (!turnClick % 2 === 0) {
+                        cellStates[choice] = true;
+                        xPlayer.selects.push(choice);
+                        event.target.classList.add("xSelect");
+                        evaluateCombinations();
+                    } else if (turnClick % 2 === 0) {
+                         cellStates[choice] = true;
+                         oPlayer.selects.push(choice);
+                         event.target.classList.add("oSelect");
+                         evaluateCombinations();
+                        }
+                    } 
                 }
-            } 
+                
+            })
         }
-        
+    
+    function changeTurn() {
+        if (!turnClick % 2 === 0) {
+            alertWindow.innerText = "Lemon Turn"
+        } else {
+            alertWindow.innerText = "Melon turn"
+        }
     }
-    function eval() {
-        if (turnClick == "0") {
+    
+    function gameDraw() {
+        alertWindow.innerText = "Too many fruits! Try again?";
+        for (let state in cellStates) {
+            cellStates[state] = true;
+        }
+    }
+    function evaluateCombinations() {
+        if (turnClick === "0") {
             for (let i = 0; i < winStates.length; i++) {
                 let winningCombo = winStates[i];
                 let match = 0;
@@ -70,7 +86,7 @@ window.addEventListener("DOMContentLoaded", () => {
                         match++;
                     }
                     if (match === 3) {
-                        alertWindow.innerText = "player X winz!";
+                        alertWindow.innerText = "Lemons Lined!";
                     }
                 }
             }
@@ -83,7 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
                         match++;
                     }
                     if (match === 3) {
-                        alertWindow.innerText = "player O winz!"
+                        alertWindow.innerText = "Melons Made It!"
                     }
                 }
             }
@@ -95,30 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
             changeTurn();
         }
     }
-    function changeTurn() {
-        if (!turnClick % 2 === 0) {
-            alertWindow.innerText = "oh my! it's O's turn."
-        } else {
-            alertWindow.innerText = "x gonna give it to ya."
-        }
-    }
-    
-    function gameDraw() {
-        alertWindow.innerText = "tis a draw!";
-        for (let state in cellStates) {
-            cellStates[state] = true;
-        }
-    }
-    
-    butOn.addEventListener("click", () =>{
-        for (let i = 0; i < gameTiles.length; i++) {
-            gameTiles[i].classList.remove("clicked");
-            gameTiles[i].innerText = "";
-            turnClick = "0";
-    }})
-}
-
-
+})
 // for (let i = 0; i < winStates.length; i++)
 //     if () {
     //         alertWindow.innerText = "Lemons successfully Lined! Lemons win!"
@@ -207,4 +200,4 @@ for (let i = 0; i < winStates.length; i++) {
 }
 }
 /!\ copy paster /!\
-*/)
+*/ 
