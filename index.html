@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tic Tac Toe</title>
+        <title>Tic Tac Toe 98</title>
         <link rel="stylesheet" href="./styles/style.css"/>
         <script src="./scripts/app.js"></script>
     </head>
     <body>
-        <h1>Tic Tac Toe</h1>
-        <div id="user-message">Player 1's Turn</div>
-        <div id="game-board">
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
-            <div class="game-tile"></div>
+        <div id="game-window">
+            <div id="window-title">
+                Tic Tac Toe 98
+                <div class="window-controls">
+                    <button class="window-button">
+                        <img id="minimize" src="img/minimize.svg" alt="minimize"/>
+                    </button>
+                    <button class="window-button">
+                        <img id="maximize" src="img/maximize.svg" alt="maximize"/>
+                    </button>
+                    <button class="window-button">
+                        <img id="close" src="img/close.svg" alt="close"/>
+                    </button>
+                </div>
+            </div>
+            <div id="user-message">Player 1's Turn</div>
+            <div id="game-board">
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+            </div>
+            <button id="reset">Reset</button>
         </div>
-        <button id="reset">Reset</button>
     </body>
 </html>

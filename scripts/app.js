@@ -42,10 +42,11 @@ window.addEventListener("DOMContentLoaded", () => {
                     //add x or o depending on whose turn it is
                     if(playerTurn){
                         gameState[i] = "x"
+                        gameTiles[i].classList.add("player-one")
                     } else {
                         gameState[i] = "o"
+                        gameTiles[i].classList.add("player-two")
                     }
-                    gameTiles[i].innerText = gameState[i]
                     //check if someone won
                     uglyBruteForceChecker(i)
                     //change turn
@@ -80,7 +81,8 @@ window.addEventListener("DOMContentLoaded", () => {
     //reset button set everything back to 0
     document.querySelector("#reset").addEventListener("click", () => {
         for(let i = 0; i < gameTiles.length; i++) {
-            gameTiles[i].innerText = ""
+            gameTiles[i].classList.remove("player-one")
+            gameTiles[i].classList.remove("player-two")
         }
         console.log("Resetting")
         gameOver = false
@@ -88,6 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
         winner = ""
         gameState = [0,0,0,0,0,0,0,0,0]
         possWins = winStates.slice()
+        document.querySelector("#user-message").innerText = "Player 1's Turn"
     })
 
 
