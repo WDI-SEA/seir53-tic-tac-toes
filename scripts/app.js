@@ -18,18 +18,19 @@ window.addEventListener('DOMContentLoaded', () => {
     const winningMessageElement = document.getElementById('winning')
     const winningMessageText = document.querySelector('[data-winning-message-text]')
     const restart = document.getElementById('restart')
-    let circleTurn
+    let circleTurn = false 
 
 
     // Call Start Game Function to set the board in a start game state
     startGame()
-
+    document.getElementById('replace').innerHTML = (`X's turn!`)
+    
     // Click Event Listener for Restart Button
     restart.addEventListener('click', startGame)
 
     // Function to start game 
     function startGame() {
-        circleTurn = false
+        
         // Checks each cell and only allows one click per game
         gameTileElements.forEach (gameTile => {
             gameTile.classList.remove(player1)
@@ -43,7 +44,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Function for handling the click on each cell during a game 
     function handleClick(e) {
-
         // Define Variables to determine clicked tile and interact with it appropriately
         const gameTile = e.target
         const currentClass = circleTurn ? player2 : player1
@@ -59,9 +59,9 @@ window.addEventListener('DOMContentLoaded', () => {
         else {
             swapTurns()
             setBoardHoverClass()
+            displayText()
         }
     }
-
 
     // Function to end the game on Draw or Win and show proper message
     function endGame(draw) {
@@ -85,10 +85,20 @@ window.addEventListener('DOMContentLoaded', () => {
     function placeMark(gameTile, currentClass) {
         gameTile.classList.add(currentClass)
     }
-
     // Function to swap turns between o and x
     function swapTurns() {
         circleTurn = !circleTurn
+    }
+
+    function displayText() {
+        if(container.classList.contains(player2)) {
+            document.getElementById('replace').innerHTML = (`O's turn!`)
+        }
+        else if(container.classList.contains(player1)) {
+            document.getElementById('replace').innerHTML = (`X's turn!`)
+        }
+        else {
+        }
     }
 
     //Function to apply hover state during the game
@@ -118,14 +128,4 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         )}
     )}
-
-                // Display message of current players turn
-
-                // Track players wins over time (with reset button)
-
-                // Add simple AI for one player mode (with a toggle switch) computer picks random empty square
-                // Include Short time delay
-
-                // Create more difficult AI using mini-max algorithm
-                // Create Toggle Switch for AI Difficulty Levels
-})
+})    
