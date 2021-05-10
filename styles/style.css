@@ -1,0 +1,110 @@
+body {
+  text-align: center;
+  background: #000;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  padding: 25px 0 25px 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 50px;
+  color: #e5e5e7;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #a426ec, 0 0 20px #a426ec,
+    0 0 25px #a426ec, 0 0 30px #a426ec, 0 0 35px #a426ec;
+}
+
+h2 {
+  margin: 30px auto 30px auto;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  color: #e5e5e7;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #a426ec, 0 0 20px #a426ec,
+    0 0 25px #a426ec, 0 0 30px #a426ec, 0 0 35px #a426ec;
+}
+
+#container {
+  margin: 0 auto;
+  display: grid;
+  width: 300px;
+  height: 300px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.gameTile {
+  border: 1px solid #435568;
+  font-weight: bold;
+  font-size: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameTile_0,
+#gameTile_1,
+#gameTile_2 {
+  border-top: none;
+}
+
+#gameTile_0,
+#gameTile_3,
+#gameTile_6 {
+  border-left: none;
+}
+
+#gameTile_6,
+#gameTile_7,
+#gameTile_8 {
+  border-bottom: none;
+}
+
+#gameTile_2,
+#gameTile_5,
+#gameTile_8 {
+  border-right: none;
+}
+
+button {
+  margin-top: 50px;
+  font-size: 1rem;
+  font-weight: 200;
+  color: #fff;
+  padding: 10px 15px;
+  border: 0.4rem solid rgb(218, 211, 211);
+  border-radius: 20px;
+  text-transform: uppercase;
+
+  box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem #0073e6,
+    inset 0 0 2rem #0073e6, 0 0 4rem #0073e6, inset 0 0 4rem #0073e6;
+}
+
+button:hover {
+  background-color: #f40;
+  color: #fff;
+  box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem #f40,
+    inset 0 0 2rem #f40, 0 0 4rem #f40, inset 0 0 4rem #f40;
+  border-color: #fff;
+}
+
+.X::after {
+  content: "X";
+  color: #e5e5e7;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6,
+    0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+}
+.O::after {
+  content: "O";
+  color: #e5e5e7;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b30000, 0 0 20px #b30000,
+    0 0 25px #b30000, 0 0 30px #b30000, 0 0 35px #b30000;
+}
