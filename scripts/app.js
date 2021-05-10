@@ -82,7 +82,7 @@ stopGame ()
            let tile = gameTiles[i].innerText
           
            // toggle between whichever letter is current vs x or 0
-           let newPlayStatus = playerTurns % 2 === 0 ? "X" : "O"
+           let newPlayStatus = playerTurns % 2 === 0 ? "playerX" && "X" : "playerO" && "O"
            
            // set innerText of div to be new toggled letter
            gameTiles[i].innerText = newPlayStatus
