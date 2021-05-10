@@ -15,60 +15,31 @@ window.addEventListener("DOMContentLoaded", () => {
         ["0", "4", "8"],
         ["2", "4", "6"]
     ]
-    let tileStates = {
-        0: false,
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-        6: false,
-        7: false,
-        8: false,
-    }
     
-    for (let i = 0; i < gameTiles.length; i++) {
-        gameTiles[i].addEventListener("click", (event) => {
-            if (!event.target.classList.contains("clicked")) {
-                turnTotal++
-                gameTiles[i].innerText = turnTotal % 2 === 0 ? "🍈" : "🍋"
-                alertWindow.innerText = turnTotal % 2 === 0 ? "Line some Lemons!" : "Make a move, Melon!"
-                event.target.classList.add("clicked") 
-                if (turnTotal % 2 === 0) {
-                    event.target.classList.add("Olist")
+    gameTiles.addEventListener("click", gamePlay)
+
+    function gamePlay(event) {
+        let tileCheck = event.target;
+
+                if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains("playedO")) {
+                    alertWindow.innerText = "Only one fruit per square!"
                 } else {
-                    event.target.classList.add("Xlist")
-                }
-                if (turnTotal % 2 === 0) {
-                    for (let i = 0; i < winLines.length; i++) {
-                        let winningCombo = winLines[i];
-                        let match = 0;
-                        for (let j = 0; j < winningCombo.length; j++) {
-                            if (xPlayer.includes(winningCombo[j])) {
-                                match++;
-                            }
-                            if (match === 3) {
-                                alertWindow.innerText = "player X winz!"
-                            }
-                        }
+                    if (turnTotal % 2 === 0) {
+                        tileCheck.classList.add("playedX")
+                        tileCheck.innerText = "🍋"
+                        displayTurn.innerText = "Melon, make a move!"
+                        turnTotal++
+                        playerX.push(tileCheck.id)
+                    } else {
+                        tileCheck.classList.add("playedO")
+                        tileCheck.innerText = "🍈"
+                        alertWindow.innerText = "Line some Lemons!"
+                        turnTotal++
+                        playerO.push(tileCheck.id)
                     }
-                } else {
-                    for (let i = 0; i < winLines.length; i++) {
-                        let winningCombo = winLines[i];
-                        let match = 0;
-                        for (let j = 0; j < winningCombo.length; j++) {
-                            if (oPlayer.selects.includes(winningCombo[j])) {                                        
-                                    match++;
-                                }
-                             if (match === 3) {
-                               alertWindow.innerText = "player O winz!"
-                                }
-                            }
-                        }                            
-                    }
-                }
-            })
-        }
+                    if (turnNum >= 4) {}
+}}}
+    
     butOn.addEventListener("click", () =>{
             for (let i = 0; i < gameTiles.length; i++) {
             gameTiles[i].classList.remove("clicked");
@@ -77,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
             alertWindow.innerText = "Welcome to lemonLines!"
         }
     })
-})
+
 
     // for (let i = 0; i < winStates.length; i++)
     //     if () {
