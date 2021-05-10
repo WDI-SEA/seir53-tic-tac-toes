@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     })
     }
-    const playerArray = [       
+    const WinningArray =[
         ["one", "two", "three"],
         ["four", "five", "six"],
         ["seven", "eight", "nine"],
@@ -47,9 +47,11 @@ window.addEventListener("DOMContentLoaded", () => {
         ["two", "five", "eight"],
         ["three", "six", "nine"],
         ["three", "five", "seven"],
-        ["one", "five", "nine"]
+        ["one", "five", "nine"],
+
     ]
- 
+    const playerArray = Array.from(document.getElementsByClassName("gametile"));
+
     console.log(playerArray.includes(["one", "two", "three"]));
     //let winnerBanner = document.getElementById("winnerCircle");
    // let checkIfPlayerWins = (playerArray, target) => target.every(t ); =>  
@@ -87,12 +89,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const clear = document.getElementById("clear");
     clear.addEventListener("click", (event) => {
-        for (let j=0; j < gameTiles.length; j++) {
-        let tile = gameTiles[j].innerText;
-        gameTiles[j].pull(event.target.id)
+        event.preventDefault()
         event.target.innerText = " "
-    }
-})
+        event.gameTiles.innerText = " "
+//         let tile = gameTiles[j].innerText;
+//         gameTiles[j].pull(event.target.id)
+     })
+// })
 
     // DISPLAY MESSAGE
     //// add a blank div to gameboard
