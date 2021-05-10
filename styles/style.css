@@ -22,7 +22,7 @@ h1  {
 }
 .gameTile {
     background-color: darkturquoise;
-    color: black;
+    color::slategrey;
     width: 100px;
     height: 100px;
     line-height: 100px;
@@ -33,4 +33,96 @@ h1  {
 }
 .gameTile:active {
     background-color: coral;
+}
+#one {
+    border-bottom-style: solid;
+    border-bottom-color:slategrey;
+    border-bottom-width: 2px;
+    border-right-style: solid;
+    border-right-color:slategrey;
+    border-right-width: 2px;
+}
+#two {
+    border-bottom-style: solid;
+    border-bottom-color:slategrey;
+    border-bottom-width: 2px;
+    border-right-style: solid;
+    border-right-color:slategrey;
+    border-right-width: 2px;
+    border-left-style: solid;
+    border-left-color:slategrey;
+    border-left-width: 2px;
+
+}
+#three {
+    border-bottom-style: solid;
+    border-bottom-color:slategrey;
+    border-bottom-width: 2px;
+    border-left-style: solid;
+    border-left-color:slategrey;
+    border-left-width: 2px;
+}
+#four {
+    border-bottom-style: solid;
+    border-bottom-color:slategrey;
+    border-bottom-width: 2px;
+    border-right-style: solid;
+    border-right-color:slategrey;
+    border-right-width: 2px;
+    border-top-style: solid;
+    border-top-color:slategrey;
+    border-top-width: 2px;
+}
+#five {
+    border-style: solid;
+    border-color:slategrey;
+    border-width: 2px;
+
+}
+#six {
+    border-bottom-style: solid;
+    border-bottom-color:slategrey;
+    border-bottom-width: 2px;
+    border-left-style: solid;
+    border-left-color:slategrey;
+    border-left-width: 2px;
+    border-top-style: solid;
+    border-top-color:slategrey;
+    border-top-width: 2px;
+}
+#seven {
+    border-right-style: solid;
+    border-right-color:slategrey;
+    border-right-width: 2px;
+    border-top-style: solid;
+    border-top-color:slategrey;
+    border-top-width: 2px;
+
+}
+#eight {
+    border-right-style: solid;
+    border-right-color:slategrey;
+    border-right-width: 2px;
+    border-left-style: solid;
+    border-left-color:slategrey;
+    border-left-width: 2px;
+    border-top-style: solid;
+    border-top-color:slategrey;
+    border-top-width: 2px;
+
+}
+#nine {
+    border-left-style: solid;
+    border-left-color:slategrey;
+    border-left-width: 2px;
+    border-top-style: solid;
+    border-top-color:slategrey;
+    border-top-width: 2px;
+#clear {
+    font-size: large;
+    color: firebrick;
+}
+#winnerCircle {
+    font-size: large;
+    color: cornflowerblue;
 }

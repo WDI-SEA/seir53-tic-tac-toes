@@ -3,53 +3,61 @@ window.addEventListener("DOMContentLoaded", () => {
     let playerOMoves = [];
     let totalMoves = 0;
     let gameTiles = document.querySelectorAll(".gameTile")
+    const clearButton = document.getElementById("clear")
 
     for(let i = 0; i < gameTiles.length; i++) {
         gameTiles[i].addEventListener("click", (event) => {
-//         //see what current letter is
-        //totalMoves++;
-        // let tile = gameTiles[i].innerText;
-        // let tile = event.target.innerText;
-        //let newPlayStatus = tile === "X" ? "O" : "X" 
-        //let newPlayStatus = tile === "X" //true or false
-        //event.target.innerText = totalMoves % 2 === 0 ? "X" : "O" //alternates X and Ods
-        
-        // if (event.target.className != "game tile clicked") {
-        //     event.target.innerText = nextMove
-
-        // }
-        
-        //event.target.className += " clicked";
         const userMessage = document.getElementById("userMessage")
         if (!event.target.classList.contains("clicked")) {
             event.target.className += " clicked";
             totalMoves++;
             event.target.innerText = totalMoves % 2 === 0 ? "X" : "O"
             if (totalMoves % 2 === 0) {
-                event.target.innerText = "X";
+                event.target.innerText = "O";
                 playerXMoves.push(event.target.id)
                 console.log(playerXMoves)
-                userMessage.innerText = "Player 1 Turn";
+                userMessage.innerText = "Player X Turn";
             } else {
-                event.target.innerText = "O";
+                event.target.innerText = "X";
                 playerOMoves.push(event.target.id)
                 console.log(playerOMoves)
-                userMessage.innerText = "Player 2 Turn"
+                userMessage.innerText = "Player O Turn"
             }
         }
     })
-    }
-    const WinningArray =[
-        ["one", "two", "three"],
-        ["four", "five", "six"],
-        ["seven", "eight", "nine"],
+    }//function boxClick(event) {
+    //let tileCheck = event.target
+   // if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains(playedO)) {
+   // displayTurn.innerText = "Tile already played. Click again"
+   //} else  { 
+    // if (turnNu  % 2 === 0) {
+    //      tileCheck.classList.add("played X")         <<<<<<
+    //      tileCheck.innerText = "X"
+    //      userMessage.innerText = "player 0 turn"
+    //      playerX.push(tileCheck.id)                   <<<<
+   // } else {
+   // }
+   // if (totalMoves >= 4) {
+    //  gameOver()
+   //}
+   //if (totalMoves === 9) {
+    // winnerCircle.innerText = "GAME TIED"
+    // userMessage.innerText = "Play Again"
+   // endGame()
+   //}
+   //
+    const winningArray =[       //     function gameOver() {
+        ["one", "two", "three"],    //
+        ["four", "five", "six"],     //}
+        ["seven", "eight", "nine"],  //
         ["one", "four", "seven"],
         ["two", "five", "eight"],
         ["three", "six", "nine"],
         ["three", "five", "seven"],
         ["one", "five", "nine"],
-
     ]
+    
+
     const playerArray = Array.from(document.getElementsByClassName("gametile"));
 
     console.log(playerArray.includes(["one", "two", "three"]));
@@ -69,38 +77,16 @@ window.addEventListener("DOMContentLoaded", () => {
 //gameTiles.innerText[i]
 // let currentStatus = event.target.innerText;
 // let newPlayStatus = currentStatus === "X" ? "0" : "X"
-// event.target.innerHTML = newPlayStatus
-// CHECK FOR WIN
-
-// write out all possible combinations for a tie
-//detect Draw("Tied game""No winner") conditions 
-    // capture gameboard elements
-    // see if current gameboard element methods match either win or tie conditions
-    // if true: return relevant message to message div
-
-    // else if: allow for play
-
-         // array of arrays and comapre compare player array vs win array
-        //create and event listener for click" on div .append
-    
-        //detect winner - Stops game
-        //detect winner - declares winner if one player gets 3 divs in a row
-
-
-    const clear = document.getElementById("clear");
-    clear.addEventListener("click", (event) => {
-        event.preventDefault()
-        event.target.innerText = " "
-        event.gameTiles.innerText = " "
+// event.target.innerHTML = newPlayStatus//detect Draw("Tied game""No winner") conditions 
+//once 9 clicks detected,  run Tie function
+   
+ //   clearButton.addEventListener("click", function resetGameboard() {
+ //       event.preventDefault()
+  //      event.target.innerText = " "
 //         let tile = gameTiles[j].innerText;
 //         gameTiles[j].pull(event.target.id)
+// }
      })
-// })
 
-    // DISPLAY MESSAGE
-    //// add a blank div to gameboard
-    //// if there is a winner, message the winner congratulations
-    //// else if X has just been played display a message indicating next player is O
-    //// else have next player be X
 
-    })
+    
