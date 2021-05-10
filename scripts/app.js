@@ -32,17 +32,41 @@ window.addEventListener('DOMContentLoaded', () => {
          [s1, s5, s9],
          [s3, s5, s7]
     ]
-    if (playerTurns >= 4) {
-        if (winCombo === playerX) {
-            console.log("X wins!");
-         } else if (winCombo === playerO) {
-        console.log("O wins!");
-        } else (playerTurns > 9) 
-        console.log("Tie! Everyone's a winner!! kinda..")
-         
+//     if (playerTurns >= 4) {
+//         if (winCombo === playerX) {
+//             console.log("X wins!");
+//          } else if (winCombo === playerO) {
+//         console.log("O wins!");
+//         } else (playerTurns = 9) 
+//         console.log("Tie! Everyone's a winner!! kinda..") 
+// }
+
+function stopGame () {
+   for (let i = 0; i < winCombo.length; i++) {
+       let winFoundX = 0
+       let winFoundO = 0
+       for (let y = 0; y < winCombo[i].length; y++) {
+           if (playerX.includes(winCombo[i][y])) {
+               winFoundX++
+               if (winFoundX === 3) {
+                   console.log("Player X has won!")
+                   stopGame ()
+               }
+           if (playerO.included(winCombo[i][y])) {
+               winFoundO++
+               if (winFoundO === 3) {
+                   console.log("Player O has won!")
+                   stopGame ()
+               }
+           }
+        }
+   }
 }
-   
-   
+}
+
+stopGame ()
+
+
     // On click toggle between Xs and Os on the gameboard
    let gameTiles = document.querySelectorAll('.gameTile')
 
