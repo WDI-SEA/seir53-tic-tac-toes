@@ -56,8 +56,6 @@ window.addEventListener("DOMContentLoaded", () =>{
                     break
 
 
-
-
                 // this counts to see how many tiles have been clicked, if 9, 
                 // then no more can be played, and nobody has won
 
@@ -85,6 +83,7 @@ window.addEventListener("DOMContentLoaded", () =>{
 
 
     //Start game button
+    
     let userMessage = document.querySelector("#userMessage")
     let startButton = document.querySelector("#startButton")
     
@@ -126,46 +125,40 @@ window.addEventListener("DOMContentLoaded", () =>{
             // && that the game is not over
 
             if (gameTileList[i].innerText == "" && gameOver == false){
-                // console.log(gameTileList[i])
-
-               
-
+            
             
                 
-
                 //add a turn per click
                 totalNumOfTurns++
                 console.log(totalNumOfTurns)
 
-                //IF 👣 turn, newPlayStatus = "X", ELIF ⏰ turn, newPlayStatus = "O" AND get diabled? or cant click on box with string
-                
-                //add a class to each element to identify if it's been clicked
-                //before clicking, check to make sure if it's been clicked
 
-               
+                //player 2 turn
+                //checks to see who last went,
+                // based on the turn message from clicking the start button (player 1 always 👣)
 
-
-                
-                
-                
-                
                 if (userMessage.innerText === "⏰"){
                     
+                    //makes any square click turn into the clock
                     gameTileList[i].innerText = "⏰"
+
+                    //check to see if someone won after clicking
                     winCheck()
                     
+                    //switch players
                     userMessage.innerText = "👣"
+                    
 
+                    //use this to clean up board, otherwise, displays player turn after other player wins
                     if(winner.innerText != ""){
                         userMessage.innerText = ""
                     }
 
 
 
-                // console.log("Player2")
+                //player 1 turn
                 }else{
                     
-                    // console.log(userMessage.innerText)
                     gameTileList[i].innerText = "👣"
                     winCheck()
                     
@@ -182,7 +175,8 @@ window.addEventListener("DOMContentLoaded", () =>{
 
 
 
-
+            //clear button, changes all tiles and messages to ""
+            //start button actually does the same thing
 
         let clearButton = document.querySelector("#clearButton")
         clearButton.addEventListener("click", () =>{
@@ -194,16 +188,6 @@ window.addEventListener("DOMContentLoaded", () =>{
         
                 }
             }) //end of clearButton
-
-            
- 
-
-
-
-
-
-
-
 
 //Closing Brackets            
 })
@@ -227,6 +211,12 @@ window.addEventListener("DOMContentLoaded", () =>{
 
 
 /*
+
+Biggest confusions were comparing the id's vs comaparing the text of the id's 
+-- got me stuck on the win function and the cant click tiles that already have value
+getting better with DOM!
+
+
 After TA sesh: got win function to work. getting stuck on comparing the id's not the text of the id's
 
 Need to make it turn based in order to see if the tie function works
