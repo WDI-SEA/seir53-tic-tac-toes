@@ -3,6 +3,7 @@
     text-align: center;
     font-family: 'Roboto', sans-serif;
 }
+
 body {
     background-image: url('https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png');
     background-repeat: no-repeat;
@@ -19,6 +20,7 @@ h1 {
     padding: 25px 0px 5px 0px;
     color: #023047;
 }
+
 h4 {
     padding-bottom: 10px;
     color: #8ecae6
@@ -61,6 +63,7 @@ button {
     margin-top: 15px;
     color: #fb8500;
 }
+
 label {
     color: #023047;
 }
