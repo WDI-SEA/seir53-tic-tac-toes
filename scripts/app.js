@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
    let playerTurns = 0
    let playerX = []
    let playerO = []
+   let displayResults = document.getElementById('displayResults')
 
 //WIN.LOSE.TIE CONDITIONAL
 
@@ -32,14 +33,14 @@ function stopGame () {
            if (playerX.includes(winCombo[i][y])) {
                winFoundX++
                if (winFoundX === 3) {
-                   console.log("Player X has won!")
+                   displayResults.innerText = "Player X has won!"
                }
             }
             
            if (playerO.includes(winCombo[i][y])) {
                winFoundO++
                if (winFoundO === 3) {
-                   console.log("Player O has won!")
+                   displayResults.innerText = "Player O has won!"
                }
            }
    }
