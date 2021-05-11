@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
    let playerX = []
    let playerO = []
    let displayResults = document.getElementById('displayResults')
+   let container = document.getElementById('container')
 
 //WIN.LOSE.TIE CONDITIONAL
 
@@ -16,14 +17,6 @@ window.addEventListener('DOMContentLoaded', () => {
          ["s1", "s5", "s9"],
          ["s3", "s5", "s7"]
     ]
-//     if (playerTurns >= 4) {
-//         if (winCombo === playerX) {
-//             console.log("X wins!");
-//          } else if (winCombo === playerO) {
-//         console.log("O wins!");
-//         } else (playerTurns = 9) 
-//         console.log("Tie! Everyone's a winner!! kinda..") 
-// }
 
 function stopGame () {
    for (let i = 0; i < winCombo.length; i++) {
@@ -34,6 +27,7 @@ function stopGame () {
                winFoundX++
                if (winFoundX === 3) {
                    displayResults.innerText = "Player X has won!"
+                //    container.classList.add('noClick')
                }
             }
             
@@ -41,6 +35,7 @@ function stopGame () {
                winFoundO++
                if (winFoundO === 3) {
                    displayResults.innerText = "Player O has won!"
+                //    container.classList.add('noClick')
                }
            }
    }
@@ -48,6 +43,9 @@ function stopGame () {
 }
 
 
+// function stopGame() {
+//     container.classList.add('noClick')
+//  }
 
 
     // On click toggle between Xs and Os on the gameboard
@@ -72,34 +70,26 @@ function stopGame () {
 
            let tileCheck= event.target
            console.log(event.target.id)
-    //   if(tileCheck.classList.contains("playerX") || tileCheck.classList.contains("playerO")) {
+    
            if (playerTurns % 2 ===0) {
                event.target.classList.add("playerX")
+               event.target.classList.add('noClick')
                playerX.push(event.target.id)
                console.log(`playerX => ${playerX}`)
+               displayResults.innerText = "Player O turn"
            } else { 
                event.target.classList.add("playerO")
+               event.target.classList.add('noClick')
                playerO.push(event.target.id)
                console.log(`playerO=> ${playerO}`)
+               displayResults.innerText = "Player X Turn"
            }
     //   }
             stopGame()
     })
 }
-// DIV RECOGNIZE IF X OR O PLAYED
-//    function boxClick(event) {
-//        let tileCheck= event.target
-//        if(tileCheck.classList.contains("playerX") || tileCheck.classList.contains("playerO")) {
-//            if (turnNum % 2 ===0) {
-//                event.target.tileCheck.classList.add("playerO")
-//        } else { 
-//            event.target.tileCheck.classList.add("playerX")
-//        }
-//     }
-//    })
 
-
-// boxClick()
+// Stop further game play once won
 
 // RESET BUTTON
     let gameTileList= document.getElementsByClassName('gameTile')
