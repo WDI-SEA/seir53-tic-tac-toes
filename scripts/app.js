@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 
                 if ((winFoundO !== 3) || (winFoundX !== 3)) {
                     headBoard.innerText = "Too many fruits! Try again?"
-                    alertWindow.innerText = "🍈🍋🍈🍋🍈🍋🍈🍋🍈"
+                    alertWindow.innerText = "🍋🍈🍋🍈🍋🍈🍋🍈🍋🍈🍋🍈"
                     stopGame()
                 }
             }
@@ -64,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     winFoundX++
                     if (winFoundX === 3) {
                         headBoard.innerText = "Lemons successfully lined!"
-                        alertWindow.innerText = "🍋🍋🍋🍋🍋🍋🍋🍋🍋"
+                        alertWindow.innerText = "🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋"
                         stopGame()
                     }
                 }
@@ -72,7 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     winFoundO++
                     if (winFoundO === 3) {
                         headBoard.innerText = "Melons successfully Margined!"
-                        alertWindow.innerText = "🍈🍈🍈🍈🍈🍈🍈🍈🍈"
+                        alertWindow.innerText = "🍈🍈🍈🍈🍈🍈🍈🍈🍈🍈🍈🍈"
                         stopGame()
                     }        
                 }   

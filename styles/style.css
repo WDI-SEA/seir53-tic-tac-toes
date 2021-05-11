@@ -1,13 +1,13 @@
 * {
     margin: 0 auto;
     text-align: center;
-    background-color:rgb(255, 237, 197);
+    background-color:rgb(253, 243, 153);
     font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
     padding: 20px 0px;
-    font-family: inherit;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #container {
@@ -33,8 +33,8 @@ h1 {
   } 
 
 button {
-    border: 3px solid rgb(250, 86, 122);
-    background-color: yellow;
+    border: 3px solid rgb(247, 211, 219);
+    background-color: rgb(223, 255, 173);
     border-radius: 20px;
     width: 150px;
     height: 35px;
@@ -42,9 +42,10 @@ button {
 }
 
 h2 {
-    font-size:smaller;
+    font-size: medium;
     margin-bottom: 50px;
     border: 2px solid black;
+    background-color: rgb(255, 251, 218);
     border-radius: 20px;
     width: 275px;
     font-family: inherit;
@@ -52,4 +53,13 @@ h2 {
 
 button:hover {
     cursor: pointer;
+}
+
+.imagelines {
+    position: relative;
+}
+
+#lemon {
+    justify-content: right;
+    position: absolute;
 }
