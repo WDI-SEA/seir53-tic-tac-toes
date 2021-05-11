@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     let turnTotal = 0 
+    let headBoard = document.getElementById("userMessage")
     let gameboard = document.getElementById("container")
     let gameTiles = document.querySelectorAll(".gameTile")
     let butOn = document.querySelector("#reSwitch")
@@ -23,12 +24,12 @@ window.addEventListener("DOMContentLoaded", () => {
         let tileCheck = event.target
         
         if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains("playedO")) {
-            alertWindow.innerText = "Only one fruit per square!"
+            headBoard.innerText = "Only one fruit per square!"
         } else {
             if (turnTotal % 2 === 0) {
                 tileCheck.classList.add("playedX")
                 tileCheck.innerText = "🍋"
-                displayTurn.innerText = "Melon, make a move!"
+                alertWindow.innerText = "Melon, make a move!"
                 turnTotal++
                 xPlayer.push(tileCheck.id)
             } else {
@@ -38,15 +39,16 @@ window.addEventListener("DOMContentLoaded", () => {
                 turnTotal++
                 oPlayer.push(tileCheck.id)
             }
-            if (turnNum >= 4) {
+            if (turnTotal >= 4) {
                 gameOver()
             }
             
-            if (turnNum === 9) {
+            if (turnTotal === 9) {
                 gameOver()
                 
                 if ((winFoundO !== 3) || (winFoundX !== 3)) {
-                    alertWindow.innerText = "Too many fruits! Try again?"
+                    headBoard.innerText = "Too many fruits! Try again?"
+                    alertWindow.innerText = "🍈🍋🍈🍋🍈🍋🍈🍋🍈"
                     stopGame()
                 }
             }
@@ -54,23 +56,23 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function gameOver() {
-        for (let i = o; i < winLines.length; i++) {
+        for (let i = 0; i < winLines.length; i++) {
         let winFoundX = 0
         let winFoundO = 0
-            
-            for (let j = o; j < winLines[i].length; j++) {
+            for (let j = 0; j < winLines[i].length; j++) {
                 if (xPlayer.includes(winLines[i][j])) {
                     winFoundX++
                     if (winFoundX === 3) {
-                        alertWindow.innerText = "Lemons successfully lined!"
+                        headBoard.innerText = "Lemons successfully lined!"
+                        alertWindow.innerText = "🍋🍋🍋🍋🍋🍋🍋🍋🍋"
                         stopGame()
                     }
                 }
-
-                if (oPlayer.includes(winCombo[i][j])) {
+                if (oPlayer.includes(winLines[i][j])) {
                     winFoundO++
                     if (winFoundO === 3) {
-                        alertWindow.innerText = "Melons successfully Margined!"
+                        headBoard.innerText = "Melons successfully Margined!"
+                        alertWindow.innerText = "🍈🍈🍈🍈🍈🍈🍈🍈🍈"
                         stopGame()
                     }        
                 }   
@@ -86,10 +88,14 @@ window.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < gameTiles.length; i++) {
         gameTiles[i].classList ="gameTile"
         gameTiles[i].innerText = ""
-        turnTotal = "0"
+        turnTotal = 0
         xPlayer = []
         oPlayer = []
+        winFoundO = 0
+        winFoundX = 0
         alertWindow.innerText = "Welcome to lemonLines!"
+        headBoard.innerText = ""
+        gameboard.addEventListener("click", gamePlay)
         }
     })
                 
