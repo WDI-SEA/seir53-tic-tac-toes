@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
         // event.target.innerText = totalMoves % 2 === 0 ? "X" : "O" // alternate xs and os
         if (totalMoves % 2 === 0) {
           event.target.innerText = "O";
-          message.innerText = "Player 1 turn";
+          message.innerText = "Player X turn";
           playerO.push(event.target.id)
           
           for (let y = 0; y < winner.length; y++) {
@@ -52,7 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
    
         } else {
           event.target.innerText = "X";
-          message.innerText = "Player 2 turn";
+          message.innerText = "Player O turn";
           playerX.push(event.target.id)
         
           for (let y = 0; y < winner.length; y++) {
@@ -66,7 +66,11 @@ window.addEventListener("DOMContentLoaded", () => {
         //tie  -- if playerX && playerO != winner || totalMoves = 9 
       
       }
+      if (totalMoves === 9) {
+        console.log("Tied")
+      }
     })
+
   }
   
   // Reset board and game
@@ -77,6 +81,7 @@ window.addEventListener("DOMContentLoaded", () => {
       let tile = gameTiles[j].innerText;
       gameTiles[j].innerText = "";
       gameTiles[j].className = "gameTile"
+      gameStatus.innerText = ""
     }
     playerX = [];
     playerO = [];

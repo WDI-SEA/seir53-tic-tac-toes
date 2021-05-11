@@ -2,9 +2,18 @@
   margin: 0 auto;
   text-align: center;
 }
+body {
+  font-family: 'Balsamiq Sans', cursive;
+}
 h1 {
   padding: 25px 0 25px 0;
+  font-family: 'Codystar', cursive;
 }
+#userMessage {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
 .container {
   margin: 0 auto;
   display: grid;
@@ -12,7 +21,7 @@ h1 {
   height: 300px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .gameTile {   
   background-color: deepskyblue;
@@ -20,9 +29,15 @@ h1 {
   width: 100px;
   height: 100px;
   line-height: 100px;
-  font-size: 28px;
-  border: 1px solid #000000;
+  font-size: 78px;
+  font-family: 'Pangolin', cursive;
+  border-radius: 10px;
+  margin: 3px;
 }
 .gameTile:hover {
   background-color: lightblue;
+}
+#gameStatus {
+  margin-bottom: 15px;
+  font-style: 42px;
 }
