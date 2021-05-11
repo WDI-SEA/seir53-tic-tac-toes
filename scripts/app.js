@@ -3,16 +3,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //Document Variables (variables taken from index.html)
     let gameTiles = document.querySelectorAll(".gameTile")
-
+    let reset = document.querySelector("#RESET")
     
     // Game Variables (variables used in the javascript for the game logic)
     let player1 = true;
     let player2 = false;
     let playerOne = "X";
-    let playerTwo = "O"
+    let playerTwo = "O";
     let winner = false;
     let gameDraw = false;
-    let gameBoard = ["","","","","","","","",""]
+    let gameBoard = ["","","","","","","","",""];  
+    let tile = "";
 
 
     //function to check for winning combos
@@ -30,15 +31,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
         //Comparing an array of winning combonations on active gameboard
         for (const winCombo of winningCombos ){
+            // console.log(winCombo)
             
             //If player one is true, another if statement is run to search for the winning combonation.
             //If a winning combonation is found show winner, if not show next player turn
            if(player1){
                 if(playerOne === winCombo[0] && playerOne === winCombo[1] && playerOne === winCombo[2]){
                     winner = true;
-                    return document.getElementById('userMessage').innerText = "Player X WINS!!"
+                    return document.getElementById('userMessage').innerHTML = '<h3>Player X WINS!!</h3>'
                 } else {
-                    document.getElementById('userMessage').innerText = "O Turn!!"
+                    document.getElementById('userMessage').innerHTML = "<h3>O's Turn!!</h3>"
                 }
 
             //If player two is true, another if statement is run to search for the winning combonation.
@@ -46,9 +48,9 @@ window.addEventListener('DOMContentLoaded', () => {
            } else if(player2){
                 if(playerTwo === winCombo[0] && playerTwo === winCombo[1] && playerTwo === winCombo[2]) {
                     winner = true;
-                    return document.getElementById('userMessage').innerHTML = "Player O WINS!!"
+                    return document.getElementById('userMessage').innerHTML = '<h3>Player O WINS!!</h3>'
                 } else {
-                    document.getElementById('userMessage').innerHTML = "X Turn!!"
+                    document.getElementById('userMessage').innerHTML = "<h3>X's Turn!!</h3>"
                 }
            } else {
                winner = false;
@@ -59,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 gameDraw = true;
                 if (gameDraw) {
                     document.getElementById('userMessage').innerHTML = "DRAW!!"
-                    return;
+                    // return;
                 }
             }
         }
@@ -70,18 +72,21 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < gameTiles.length; i++) {
 
         //Setting up tile as emtpy string or blank
-        let tile = "";
+        
 
         //Click function trigger by user click on gameTiles to do following:
         gameTiles[i].addEventListener("click", () => {
-
+            console.log(winner)
+            console.log(tile)
+            console.log("+++")
             //If the tile is empty and there's no winner
-            if(tile === "" && winner === false){
+            if(!gameTiles[i].innerText && winner === false){
 
                 //If player1 is true; innerText X, then gameBoard also puts X in same tile
                 //Then checks for a winner, then toggle player flags
                 if(player1) {
-                    tile = gameTiles[i].innerText = "X";
+                    gameTiles[i].innerText = "X";
+                    tile = "X"
                     gameBoard[i] = tile;  
                     checkWinner();   
                     player1 = false;
@@ -92,7 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
                  //If player2 is true; innerText O, then gameBoard also puts 0 in same tile
                 //Then checks for a winner, then toggle player flags
                    } else if(player2) {
-                    tile = gameTiles[i].innerText = "O";
+                    gameTiles[i].innerText = "O";
+                    tile = "O"
                     gameBoard[i] = tile; 
                     checkWinner(); 
                     player1 = true;
@@ -111,7 +117,41 @@ window.addEventListener('DOMContentLoaded', () => {
             //If tile is already selected
             } else{
                 console.log('do nothing')
+                console.log(gameTiles[i])
             }
         })
-    }   
+
+    }  
+    
+    //FIGURE OUT RESET BUTTON FOR BOARD WITHOUT REFRESHING PAGE!!!
+    reset.addEventListener("click", function resetGameboard() {
+        
+        let gameTiles = document.getElementsByClassName("gameTile")
+        //loop through to remove anything in gameTiles
+        for (let i = 0; i < gameTiles.length; i++){
+            gameTiles[i].classList = "gameTile"
+            gameTiles[i].innerText = ""
+        }
+        
+        gameBoard = ["","","","","","","","",""]
+        player1 = true
+        player2 = false 
+        winner = false
+        gameDraw = false
+        tile = ""
+        console.log(gameBoard)
+        console.log(player1)
+        console.log(player2)
+        console.log(winner)
+        console.log(gameDraw)
+        console.log("---")
+        //update userMessage 
+        document.getElementById('userMessage').innerHTML = '<h3>Ready Player X</h3>'
+    })
+    console.log(gameBoard)
+    console.log(player1)
+    console.log(player2)
+    console.log(winner)
+    console.log(gameDraw)
+    
 })
