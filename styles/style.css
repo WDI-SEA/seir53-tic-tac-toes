@@ -97,3 +97,18 @@ button:active {
 #rounds {
     color: rgb(229, 255, 0);
 }
+
+#stopPlayer { 
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+}

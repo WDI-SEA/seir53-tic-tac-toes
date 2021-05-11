@@ -76,8 +76,15 @@ window.addEventListener("DOMContentLoaded", () => {
                     // update the span that states who's turn it is
                     currentPlayer.innerText = `It's ${nextMove}'s turn`
 
+                    // TEST - change stopPlayer css display to flex when CPU turn
+                    if (nextMove === "O" && aiDiff != "noAI") {
+                        document.getElementById("stopPlayer").style.display = "flex"
+                        window.setTimeout(cpuPlayer, Math.ceil(Math.random() * 1500))
+                    } else {
+                        document.getElementById("stopPlayer").style.display = "none"
+                    }
                     // if O's turn, have CPU take their turn at random interval of 1 - 1.5 seconds
-                    nextMove === "O" ? window.setTimeout(cpuPlayer, Math.ceil(Math.random() * 1500)) : console.log("Not CPU's Turn")
+                    // nextMove === "O" ? window.setTimeout(cpuPlayer, Math.ceil(Math.random() * 1500)) : console.log("Not CPU's Turn")
                 }
             })
         }
@@ -137,6 +144,9 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         // display winner text
         currentPlayer.innerText = endMessage
+
+        // remove hidden div
+        document.getElementById("stopPlayer").style.display = "none"
     }
 
     function gameReset() {
