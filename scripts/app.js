@@ -1,11 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
    let playerTurns = 0
-  // BELOW FOLLOWING ANNA'S EXAMPLE; ABOVE WORKS FOR X AND O TURNS
-   let playerX = ("X", [])
-   let playerO = ("O", [])
-
- 
-   
+   let playerX = []
+   let playerO = []
 
 //WIN.LOSE.TIE CONDITIONAL
 
@@ -14,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
          ["s4", "s5", "s6"],
          ["s7", "s8", "s9"],
          ["s1", "s4", "s7"],
-         ["s2", "s5", "s3"],
+         ["s2", "s5", "s8"],
          ["s3", "s6", "s9"],
          ["s1", "s5", "s9"],
          ["s3", "s5", "s7"]
@@ -37,21 +33,20 @@ function stopGame () {
                winFoundX++
                if (winFoundX === 3) {
                    console.log("Player X has won!")
-                   stopGame()
                }
-           if (playerO.included(winCombo[i][y])) {
+            }
+            
+           if (playerO.includes(winCombo[i][y])) {
                winFoundO++
                if (winFoundO === 3) {
                    console.log("Player O has won!")
-                   stopGame()
                }
            }
-        }
    }
 }
 }
 
-stopGame()
+
 
 
     // On click toggle between Xs and Os on the gameboard
@@ -74,9 +69,36 @@ stopGame()
            // set innerText of div to be new toggled letter
            gameTiles[i].innerText = newPlayStatus
 
-       })
-   }
-   
+           let tileCheck= event.target
+           console.log(event.target.id)
+    //   if(tileCheck.classList.contains("playerX") || tileCheck.classList.contains("playerO")) {
+           if (playerTurns % 2 ===0) {
+               event.target.classList.add("playerX")
+               playerX.push(event.target.id)
+               console.log(`playerX => ${playerX}`)
+           } else { 
+               event.target.classList.add("playerO")
+               playerO.push(event.target.id)
+               console.log(`playerO=> ${playerO}`)
+           }
+    //   }
+            stopGame()
+    })
+}
+// DIV RECOGNIZE IF X OR O PLAYED
+//    function boxClick(event) {
+//        let tileCheck= event.target
+//        if(tileCheck.classList.contains("playerX") || tileCheck.classList.contains("playerO")) {
+//            if (turnNum % 2 ===0) {
+//                event.target.tileCheck.classList.add("playerO")
+//        } else { 
+//            event.target.tileCheck.classList.add("playerX")
+//        }
+//     }
+//    })
+
+
+// boxClick()
 
 // RESET BUTTON
     let gameTileList= document.getElementsByClassName('gameTile')
@@ -88,6 +110,8 @@ stopGame()
             gameTileList[v].innerText = " ";
             gameTiles[v].classList.remove('noClick')
          }
+         playerO =[]
+         playerX = []
          playerTurns = 0
     }) 
 
