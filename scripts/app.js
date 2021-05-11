@@ -38,15 +38,12 @@ function stopGame () {
                    container.classList.add('noClick')
                }
            }
+           if(playerTurns == 9 && winFoundX < 3 && winFoundO < 3) {
+                displayResults.innerText = "Tie!"
    }
 }
 }
-
-
-// function stopGame() {
-//     container.classList.add('noClick')
-//  }
-
+}
 
     // On click toggle between Xs and Os on the gameboard
    let gameTiles = document.querySelectorAll('.gameTile')
