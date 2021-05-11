@@ -76,8 +76,8 @@ window.addEventListener("DOMContentLoaded", () => {
                     // update the span that states who's turn it is
                     currentPlayer.innerText = `It's ${nextMove}'s turn`
 
-                    // if O's turn, have CPU play
-                    nextMove === "O" ? cpuPlayer() : console.log("Not CPU's Turn")
+                    // if O's turn, have CPU take their turn at random interval of 1 - 1.5 seconds
+                    nextMove === "O" ? window.setTimeout(cpuPlayer, Math.ceil(Math.random() * 1500)) : console.log("Not CPU's Turn")
                 }
             })
         }
