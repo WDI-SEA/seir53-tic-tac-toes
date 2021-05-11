@@ -1,0 +1,72 @@
+* {
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    padding: 25px 0 25px 0;
+}
+
+#displayTurn, #displayResults {
+    font-size: 36px;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.gameTile {
+    background-color: mintcream;
+    color: black;
+    width: 100px;
+    height: 100px;   
+    line-height: 100px;
+    font-size: 28px;
+    border: 1px solid black;
+}
+ 
+.gameTile:hover {
+    background-color: lightblue;
+}
+
+/* .noClick {
+    pointer-events: none;
+} */
+
+#gameTile0, 
+#gameTile1, 
+#gameTile2 {
+    border-top: none;
+}
+
+#gameTile0, 
+#gameTile3, 
+#gameTile6 {
+    border-left: none;
+}
+
+#gameTile6, 
+#gameTile7, 
+#gameTile8 {
+    border-bottom: none;
+}
+
+#gameTile2, 
+#gameTile5, 
+#gameTile8 {
+    border-right: none;
+}
+
+.playedX {
+    color: violet;
+}
+
+.playedO {
+    color: lightpink;
+}
