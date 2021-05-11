@@ -10,11 +10,21 @@ window.addEventListener("DOMContentLoaded", () => {
     let winningPlayer = null
     let roundNum = 1
     let boardArr = [["", "", ""], ["", "", ""], ["", "", ""]]
+    
 
     // variables to track X and O's scores
     // only resets with page refresh
     let pXScore = 0
     let pOScore = 0
+    let aiDiff = "easyAI"
+    
+    // add event listener to radio buttons for AI difficulty
+    for (let each of document.getElementsByName("aiDifficulty")) {
+        each.addEventListener("click", () => {
+            aiDiff = each.value
+        })
+    }
+    
     
     gameStart()
 
@@ -155,39 +165,37 @@ window.addEventListener("DOMContentLoaded", () => {
     } 
 
     function cpuPlayer() {
-        /*
-        // START OF BASIC AI
-        // basic AI that picks a random spot on the board
-        let randNum = Math.floor(Math.random() * 9)
-        while (gameTiles[randNum].innerText != "") {
-            randNum = Math.floor(Math.random() * 9)
-        }
-        // simulate click on random tile that is open
-        gameTiles[randNum].click()
-        // END OF BASIC AI
-        */
-        
-        // since cpu is maximizing player set bestScore to -∞
-        let bestScore = -Infinity
-        let move
-        
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                // check if spot is available
-                if (boardArr[i][j] == "") {
-                    // if available set to O, run the minimax algo, blank the spot on the board
-                    boardArr[i][j] = "O"
-                    let score = minimax(boardArr, 0, false)
-                    boardArr[i][j] = ""
-                    if (score > bestScore) {
-                        bestScore = score
-                        move = { i, j }
+        if (aiDiff === "easyAI") {
+            // basic AI that picks a random spot on the board
+            let randNum = Math.floor(Math.random() * 9)
+            while (gameTiles[randNum].innerText != "") {
+                randNum = Math.floor(Math.random() * 9)
+            }
+            // simulate click on random tile that is open
+            gameTiles[randNum].click()
+        } else {
+            // since cpu is maximizing player set bestScore to -∞
+            let bestScore = -Infinity
+            let move
+            
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    // check if spot is available
+                    if (boardArr[i][j] == "") {
+                        // if available set to O, run the minimax algo, blank the spot on the board
+                        boardArr[i][j] = "O"
+                        let score = minimax(boardArr, 0, false)
+                        boardArr[i][j] = ""
+                        if (score > bestScore) {
+                            bestScore = score
+                            move = { i, j }
+                        }
                     }
                 }
             }
+            // this is where the AI makes it's move
+            gameTiles[ ((move.i * 3) + move.j) ].click()
         }
-        // this is where the AI makes it's move
-        gameTiles[ ((move.i * 3) + move.j) ].click()
     }
 
     // used to determine if the move will result in a better score for X, O, or if it will be a tie
