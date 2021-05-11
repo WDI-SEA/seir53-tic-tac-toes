@@ -173,7 +173,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             // simulate click on random tile that is open
             gameTiles[randNum].click()
-        } else {
+        } else if (aiDiff === "hardAI") {
             // since cpu is maximizing player set bestScore to -∞
             let bestScore = -Infinity
             let move

@@ -23,6 +23,10 @@ h1 {
     margin: 0 15px;
 }
 
+#userScores span {
+    color: rgb(229, 255, 0);
+}
+
 #container {
     margin: 0 auto;
     display: grid;
@@ -63,6 +67,15 @@ body>div {
     margin: 15px;
 }
 
+input {
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+input:checked + label{
+    color: rgb(229, 255, 0);
+}
+
 button {
     font-family: "Walter Turncoat", cursive;
     font-size: 20px;
@@ -79,4 +92,8 @@ button:hover {
 
 button:active {
     background-color: black;
+}
+
+#rounds {
+    color: rgb(229, 255, 0);
 }
