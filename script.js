@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
    let gameTile7 = document.getElementById('7').innerText
    let gameTile8 = document.getElementById('8').innerText
    let gameTiles = document.getElementById("gameTiles")
+   let button = document.getElementsByClassName('resetdiv')
    let turnCounter = 0
    
 
@@ -21,20 +22,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
    // displays game results
     function xWinResults () {
-      document.querySelector('.results').innerText = 'X is the Winner!'
-      displayTurn.innerText = ""
+      document.querySelector('#displayTurn').style.fontsize = "xx-large"
+      document.querySelector('#displayTurn').innerText = 'X is the Winner!'
+      document.querySelector('#results').innerText = 'Nice Job X!'
       stopGame()
     }
 
     function oWinResults () {
-      document.querySelector('.results').innerText = 'O is the Winner!'
-      displayTurn.innerText = ''
+      document.querySelector('#displayTurn').style.fontsize = "xx-large"
+      document.querySelector('#displayTurn').innerText = 'O is the Winner!'
+      document.querySelector('#results').innerText = 'Nice Job O!'
       stopGame()
     }
 
     function tieResults () {
-      document.querySelector('.results').innerText = 'Tie Game!'
-      displayTurn.innerText = ''
+      document.querySelector('#displayTurn').style.fontsize = "xx-large"
+      document.querySelector('#displayTurn').innerText = 'Tie Game!'
+      document.querySelector('#results').innerText = 'Try Again!'
       stopGame()
     }
 
@@ -213,16 +217,16 @@ window.addEventListener('DOMContentLoaded', () => {
     // TIE CONDITION // win on last move not coded in
  
     if (
-          gameTile0 !== "" &&
-          gameTile1 !== "" &&
-          gameTile2 !== "" &&
-          gameTile3 !== "" &&
-          gameTile4 !== "" &&
-          gameTile5 !== "" &&
-          gameTile6 !== "" &&
-          gameTile7 !== "" &&
-          gameTile8 !== ""
-    ) { tieResults()
+      document.getElementById('0').innerText !== "" &&
+      document.getElementById('1').innerText !== "" &&
+      document.getElementById('2').innerText !== "" &&
+      document.getElementById('3').innerText !== "" &&
+      document.getElementById('4').innerText !== "" &&
+      document.getElementById('5').innerText !== "" &&
+      document.getElementById('6').innerText !== "" &&
+      document.getElementById('7').innerText !== "" &&
+      document.getElementById('8').innerText !== "") { 
+             tieResults()
     }  
    }
     
