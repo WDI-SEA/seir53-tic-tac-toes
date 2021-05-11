@@ -1,13 +1,19 @@
 window.addEventListener("DOMContentLoaded", () => {
-  //players
+ // Capture DOM elements from page to store as vars
+  let message = document.getElementById("userMessage")
+  let gameStatus = document.getElementById("gameStatus")
+  let clear = document.getElementById("clear");
+  
+  // set intial turn message
+  message.innerText = "Player X goes first."
+
+  // Create or declare all game logic variables and conditions
   let playerX = [];
   let playerO = [];
   let totalMoves = 0;
 
-  
   //get all tiles
   let gameTiles = document.querySelectorAll(".gameTile");
-
 
   const winner = [
     ["top-left", "top-mid", "top-right"],
@@ -25,62 +31,48 @@ window.addEventListener("DOMContentLoaded", () => {
     gameTiles[i].addEventListener("click", (event) => {
       // see what current letter is of game tile that was clicked
       //prevent cell from being clicked if alredy filled
-     
-      const message = document.getElementById("userMessage");
+ 
       if (!event.target.classList.contains("clicked")) {
         event.target.className += " clicked";
         totalMoves++;
         // event.target.innerText = totalMoves % 2 === 0 ? "X" : "O" // alternate xs and os
         if (totalMoves % 2 === 0) {
           event.target.innerText = "O";
+          message.innerText = "Player 1 turn";
           playerO.push(event.target.id)
-          console.log(playerO)
-          message.innerText = "Player 2 turn";
-          let winGame = playerO.every(playerO => winner.includes(playerO))
-          console.log(winGame())
-
+          
+          for (let y = 0; y < winner.length; y++) {
+            //target.every(v => arr.includes(v))
+            if (winner[y].every(winCombo => playerO.includes(winCombo))) {
+              gameStatus.innerText = "O has won the game!"
+           
+            }
+      
+          }
+   
         } else {
           event.target.innerText = "X";
+          message.innerText = "Player 2 turn";
           playerX.push(event.target.id)
-          console.log(playerO)
-          message.innerText = "Player 1 turn";
+        
+          for (let y = 0; y < winner.length; y++) {
+            if (winner[y].every(winCombo => playerX.includes(winCombo))) {
+              gameStatus.innerText = "X has won the game!"
+            }
+          }
 
-          let winGame = playerX.every(playerX => winner.includes(playerX))
-          console.log(winGame())
-        } 
-            //tie  -- if playerX && playerO != winner || totalMoves = 5 
+        }
+
+        //tie  -- if playerX && playerO != winner || totalMoves = 9 
       
       }
-    });
+    })
   }
-
-
-
-    //function that will fire when clicked  
-    //check against player each indvid
-    //arrary of arrays and compare player array vs win array 
-     //iterate through a of a 
-     // then check 
-     
-
-
-    // for(let i = 0; i < winner.length; i++){
-    
-      // for(let j = 0; j < winner[j].length; j++) {
-      //   console.log(winner[i][j]);
-      //   if (playerX === )
-      // }
-      // console.log(winGame(playerX, winner))
- 
-  // if (gameTiles[0].innerText ===  gameTiles[1].innerText && gameTiles[0].innerText === gameTiles[2].innerText && gameTiles[0].innerText === "X") {
-  //   console.log("x player won")
-  // }
-
+  
   // Reset board and game
-  const clear = document.getElementById("clear");
+
 
   clear.addEventListener("click", () => {
-    // const gatherBoxes = document.querySelectorAll('.clear')
     for (let j = 0; j < gameTiles.length; j++) {
       let tile = gameTiles[j].innerText;
       gameTiles[j].innerText = "";
@@ -89,4 +81,5 @@ window.addEventListener("DOMContentLoaded", () => {
     playerX = [];
     playerO = [];
   });
-});
+
+}); // closes DOM event
