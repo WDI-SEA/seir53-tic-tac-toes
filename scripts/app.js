@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
             if (turnTotal === 9) {
                 gameOver()
                 
-                if ((winFoundO !== 3) || (winFoundX !== 3)) {
+                if ((alertWindow.innerText != "🍈🍈🍈🍈🍈🍈🍈🍈🍈🍈🍈🍈") && (alertWindow.innerText != "🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋")) {
                     headBoard.innerText = "Too many fruits! Try again?"
                     alertWindow.innerText = "🍋🍈🍋🍈🍋🍈🍋🍈🍋🍈🍋🍈"
                     stopGame()
