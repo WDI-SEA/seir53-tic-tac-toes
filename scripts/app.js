@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let winnerBanner = document.getElementById("winnerCircle")
     const userMessage = document.getElementById("userMessage")
     let gameTiles = document.querySelectorAll(".gameTile")
+    let gameboard = document.getElementById("gameboard")
     userMessage.innerText = "Player X goes first."
 
     let playerXMoves = []
@@ -18,24 +19,24 @@ window.addEventListener("DOMContentLoaded", () => {
         ["three", "five", "seven"],
         ["one", "five", "nine"],
     ]
-    gameTiles.addEventListener("click", boxClick)
+
     function boxClick(event) {
         let tileCheck = event.target
         if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains("playedO")) {
             userMessage.innerText = "Tile already played. Click again."
         } else {
             if (totalMoves % 2 === 0) {
-                tileCheck.innerText = "X"
                 tileCheck.classList.add("playedX")
+                tileCheck.innerText = "X"
                 userMessage.innerText = "Player O Turn"
                 totalMoves++
                 playerXMoves.push(tileCheck.id)
             } else {
+                tileCheck.classList.add("playedO")
                 tileCheck.innerText = "O"
-                playerOMoves.push(tileCheck.id)
-                tileCheck.classList.add("played O") 
                 userMessage.innerText = "Player X Turn"
                 totalMoves++
+                playerOMoves.push(tileCheck.id) 
             }
          if (totalMoves >= 4) {
             endGame()
@@ -48,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 }
-
+gameboard.addEventListener("click", boxClick)
 
 function endGame () {
     for (let i = 0; i < winningArray.length; i++) {
@@ -75,7 +76,7 @@ function endGame () {
   }
 }
   function stopGame() {
-    gameTiles.removeEventListener('click', boxClick)
+    gameboard.removeEventListener('click', boxClick)
   }
 })
 //tileCheck.innerText = totalMoves % 2 === 0 ? "X" : "O"
