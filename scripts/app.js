@@ -65,7 +65,7 @@ function resultValidation() {
 
 function cellClick(clickedCellEvent) {
     const clickedCell = clickedCellEvent.target;
-    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('cellId'));
 
     if (gameState[clickedCellIndex] !== "" || !gameActive) {
         return;
@@ -85,3 +85,39 @@ function restartGame() {
 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', cellClick));
 document.querySelector('.restart').addEventListener('click', restartGame);
+document.querySelector('.computer').addEventListener('click', vsAi);
+
+
+
+function vsAi() {
+    
+    if (!gameActive) {
+        return;
+    }
+    
+    const aiCells = []
+    for (i = 0; i < gameState.length; i++) {
+        // grab the cell from gamestate
+        const cellAi = gameState[i]
+        // if the cell is empty, push to aiCells
+        if (cellAi === "") {            
+            aiCells.push(i)
+        }
+    }
+
+    const aiIndex = Math.floor(Math.random() * aiCells.length)
+    const randomMove = aiCells[aiIndex]
+    
+    const aiClickedCell = document.querySelector(`.cell[cellId="${randomMove}"]`)
+    
+    cellClick({
+      target: aiClickedCell
+    })
+    
+}
+
+// aiCells contains the possible "moves"
+// randomMove chooses a random "move" from aiCells
+// and using cellClick function performs the 
+// move => "aiClicked" which calls in the available aiCell "move".
+
