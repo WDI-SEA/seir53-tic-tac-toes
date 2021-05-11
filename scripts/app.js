@@ -6,20 +6,12 @@ window.addEventListener('DOMContentLoaded', () => {
     let gameOver = ''
     let currentTurn = user1
     let turnCounter = 0
-    let gt1 = document.getElementById('gt1')
-    let gt2 = document.getElementById('gt2')
-    let gt3 = document.getElementById('gt3')
-    let gt4 = document.getElementById('gt4')
-    let gt5 = document.getElementById('gt5')
-    let gt6 = document.getElementById('gt6')
-    let gt7 = document.getElementById('gt7')
-    let gt8 = document.getElementById('gt8')
-    let gt9 = document.getElementById('gt9')
     let userMessage = document.getElementById('userMessage')
 
     // for each game tile add click event listener
     for (let i = 0; i < gameTiles.length; i++) {
     gameTiles[i].addEventListener('click', () => {
+
         // if tile is empty, make selection.
         // else do nothing
             if (gameTiles[i].innerText === "") {
@@ -42,47 +34,30 @@ window.addEventListener('DOMContentLoaded', () => {
     // check for win
     // if any of the 8 win conditions are met
     // declare winner and end game
+    let winCombo = [
+        ['gt1', 'gt2', 'gt3'],
+        ['gt4', 'gt5', 'gt6'],
+        ['gt7', 'gt8', 'gt9'],
+        ['gt1', 'gt4', 'gt7'],
+        ['gt2', 'gt5', 'gt8'],
+        ['gt3', 'gt6', 'gt9'],
+        ['gt1', 'gt5', 'gt9'],
+        ['gt7', 'gt5', 'gt3']
+    ]
     function checkWin() {
-         if (gt1.innerText === gt2.innerText && gt2.innerText === gt3.innerText) {
-            if (gt1.innerText !== '') {
-                userMessage.innerText = `${gt1.innerText} wins!`
-                currentTurn = gameOver
-            }                
-        } else if (gt4.innerText === gt5.innerText && gt5.innerText === gt6.innerText) {
-            if (gt4.innerText !== '') {
-                userMessage.innerText = `${gt4.innerText} wins!`
-                currentTurn = gameOver
-            }
-        } else if (gt7.innerText === gt8.innerText && gt8.innerText === gt9.innerText) {
-            if (gt7.innerText !== '') {
-                userMessage.innerText = `${gt7.innerText} wins!`
-                currentTurn = gameOver
-            }
-        } else if (gt1.innerText === gt4.innerText && gt4.innerText === gt7.innerText) {
-            if (gt1.innerText !== '') {
-                userMessage.innerText = `${gt1.innerText} wins!`
-                currentTurn = gameOver
-            }
-        } else if (gt2.innerText === gt5.innerText && gt5.innerText === gt8.innerText) {
-            if (gt2.innerText !== '') {
-                userMessage.innerText = `${gt2.innerText} wins!`
-                currentTurn = gameOver
-            }
-        } else if (gt3.innerText === gt6.innerText && gt6.innerText === gt9.innerText) {
-            if (gt3.innerText !== '') {
-                userMessage.innerText = `${gt3.innerText} wins!`
-                currentTurn = gameOver
-            }
-        } else if (gt1.innerText === gt5.innerText && gt5.innerText === gt9.innerText) {
-            if (gt1.innerText !== '') {
-                userMessage.innerText = `${gt1.innerText} wins!`
-                currentTurn = gameOver
-            }
-        } else if (gt7.innerText === gt5.innerText && gt5.innerText === gt3.innerText) {
-            if (gt7.innerText !== '') {
-                userMessage.innerText = `${gt7.innerText} wins!`
-                currentTurn = gameOver
-            }
+        for (let i = 0; i < winCombo.length; i++) {
+
+            // if any of the win conditions have equivalent inner text
+            if (document.getElementById(winCombo[i][0]).innerText === document.getElementById(winCombo[i][1]).innerText && document.getElementById(winCombo[i][1]).innerText === document.getElementById(winCombo[i][2]).innerText) {
+                for (let y = 0; y < winCombo[i].length; y++){
+                    
+                    // if the inner text is not empty
+                    if (document.getElementById(winCombo[i][y]).innerText !== '') {
+                        userMessage.innerText = `${document.getElementById(winCombo[i][y]).innerText} wins!`
+                        currentTurn = gameOver
+                    }
+                }
+            }            
         }
     }
 
