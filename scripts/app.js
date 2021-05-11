@@ -27,7 +27,7 @@ function stopGame () {
                winFoundX++
                if (winFoundX === 3) {
                    displayResults.innerText = "Player X has won!"
-                //    container.classList.add('noClick')
+                   container.classList.add('noClick')
                }
             }
             
@@ -35,7 +35,7 @@ function stopGame () {
                winFoundO++
                if (winFoundO === 3) {
                    displayResults.innerText = "Player O has won!"
-                //    container.classList.add('noClick')
+                   container.classList.add('noClick')
                }
            }
    }
@@ -89,8 +89,6 @@ function stopGame () {
     })
 }
 
-// Stop further game play once won
-
 // RESET BUTTON
     let gameTileList= document.getElementsByClassName('gameTile')
     let clear= document.getElementById('Reset')
@@ -100,6 +98,7 @@ function stopGame () {
             let tile =gameTileList[v].innerText
             gameTileList[v].innerText = " ";
             gameTiles[v].classList.remove('noClick')
+            container.classList.remove('noClick')
          }
          playerO =[]
          playerX = []
