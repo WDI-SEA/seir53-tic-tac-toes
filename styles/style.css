@@ -22,12 +22,13 @@ h1  {
 }
 .gameTile {
     background-color: darkturquoise;
-    color::slategrey;
+    color:slategrey;
     width: 100px;
     height: 100px;
     line-height: 100px;
     font-size: 25px;
 }
+
 .gameTile:hover {
     background-color: greenyellow;
 }
@@ -118,11 +119,22 @@ h1  {
     border-top-style: solid;
     border-top-color:slategrey;
     border-top-width: 2px;
+}
 #clear {
     font-size: large;
     color: firebrick;
 }
+#userMessage {
+    font-size: 30px;
+    color:black;
+}
 #winnerCircle {
-    font-size: large;
-    color: cornflowerblue;
+    font-size: 30px;
+    color:black;
+}
+.playedX {
+    color: black;
+}
+.playedO {
+    color: black;
 }
