@@ -25,6 +25,11 @@ window.addEventListener("DOMContentLoaded", () => {
     ["top-left", "mid-mid", "bot-right"],
     ["top-right", "mid-mid", "bot-left"]
   ]
+  //TODO where to add
+  // if (gameStatus.innerText === "") {
+  //   gameStatus.style.background = "#ffffff"
+  // }
+
 
   //click event for tiles.
   for (let i = 0; i < gameTiles.length; i++) {
@@ -36,15 +41,20 @@ window.addEventListener("DOMContentLoaded", () => {
         event.target.className += " clicked";
         totalMoves++;
         // event.target.innerText = totalMoves % 2 === 0 ? "X" : "O" // alternate xs and os
+        if (totalMoves === 9) {
+          gameStatus.innerText = "You Tied"
+        }
+
         if (totalMoves % 2 === 0) {
           event.target.innerText = "O";
           message.innerText = "Player X turn";
           playerO.push(event.target.id)
           
           for (let y = 0; y < winner.length; y++) {
+
             //target.every(v => arr.includes(v))
             if (winner[y].every(winCombo => playerO.includes(winCombo))) {
-              gameStatus.innerText = "O has won the game!"
+              gameStatus.innerText = "Player O has won the game!"
            
             }
       
@@ -57,25 +67,18 @@ window.addEventListener("DOMContentLoaded", () => {
         
           for (let y = 0; y < winner.length; y++) {
             if (winner[y].every(winCombo => playerX.includes(winCombo))) {
-              gameStatus.innerText = "X has won the game!"
+              gameStatus.innerText = "Player X has won the game!"
             }
           }
 
         }
+      }
 
-        //tie  -- if playerX && playerO != winner || totalMoves = 9 
-      
-      }
-      if (totalMoves === 9) {
-        console.log("Tied")
-      }
     })
 
   }
   
   // Reset board and game
-
-
   clear.addEventListener("click", () => {
     for (let j = 0; j < gameTiles.length; j++) {
       let tile = gameTiles[j].innerText;
