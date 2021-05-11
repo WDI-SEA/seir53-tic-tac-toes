@@ -1,10 +1,11 @@
 window.addEventListener("DOMContentLoaded", () => {
     let turnTotal = 0 
+    let gameboard = document.getElementById("container")
     let gameTiles = document.querySelectorAll(".gameTile")
-    let butOn = document.querySelector("#reSwitch");
-    let alertWindow = document.querySelector(".alerty");
-    let xPlayer = [];
-    let oPlayer = [];
+    let butOn = document.querySelector("#reSwitch")
+    let alertWindow = document.querySelector(".alerty")
+    let xPlayer = []
+    let oPlayer = []
     const winLines = [
         ["0", "1", "2"],
         ["3", "4", "5"],
@@ -16,38 +17,85 @@ window.addEventListener("DOMContentLoaded", () => {
         ["2", "4", "6"]
     ]
     
-    gameTiles.addEventListener("click", gamePlay)
-
-    function gamePlay(event) {
-        let tileCheck = event.target;
-
-                if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains("playedO")) {
-                    alertWindow.innerText = "Only one fruit per square!"
-                } else {
-                    if (turnTotal % 2 === 0) {
-                        tileCheck.classList.add("playedX")
-                        tileCheck.innerText = "🍋"
-                        displayTurn.innerText = "Melon, make a move!"
-                        turnTotal++
-                        playerX.push(tileCheck.id)
-                    } else {
-                        tileCheck.classList.add("playedO")
-                        tileCheck.innerText = "🍈"
-                        alertWindow.innerText = "Line some Lemons!"
-                        turnTotal++
-                        playerO.push(tileCheck.id)
-                    }
-                    if (turnNum >= 4) {}
-}}}
+    gameboard.addEventListener("click", gamePlay)
     
+    function gamePlay(event) {
+        let tileCheck = event.target
+        
+        if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains("playedO")) {
+            alertWindow.innerText = "Only one fruit per square!"
+        } else {
+            if (turnTotal % 2 === 0) {
+                tileCheck.classList.add("playedX")
+                tileCheck.innerText = "🍋"
+                displayTurn.innerText = "Melon, make a move!"
+                turnTotal++
+                xPlayer.push(tileCheck.id)
+            } else {
+                tileCheck.classList.add("playedO")
+                tileCheck.innerText = "🍈"
+                alertWindow.innerText = "Line some Lemons!"
+                turnTotal++
+                oPlayer.push(tileCheck.id)
+            }
+            if (turnNum >= 4) {
+                gameOver()
+            }
+            
+            if (turnNum === 9) {
+                gameOver()
+                
+                if ((winFoundO !== 3) || (winFoundX !== 3)) {
+                    alertWindow.innerText = "Too many fruits! Try again?"
+                    stopGame()
+                }
+            }
+        }
+    }
+
+    function gameOver() {
+        for (let i = o; i < winLines.length; i++) {
+        let winFoundX = 0
+        let winFoundO = 0
+            
+            for (let j = o; j < winLines[i].length; j++) {
+                if (xPlayer.includes(winLines[i][j])) {
+                    winFoundX++
+                    if (winFoundX === 3) {
+                        alertWindow.innerText = "Lemons successfully lined!"
+                        stopGame()
+                    }
+                }
+
+                if (oPlayer.includes(winCombo[i][j])) {
+                    winFoundO++
+                    if (winFoundO === 3) {
+                        alertWindow.innerText = "Melons successfully Margined!"
+                        stopGame()
+                    }        
+                }   
+            }
+        }
+    }
+    function stopGame() {
+        gameboard.removeEventListener("click", gamePlay)
+    }
+
+
     butOn.addEventListener("click", () =>{
-            for (let i = 0; i < gameTiles.length; i++) {
-            gameTiles[i].classList.remove("clicked");
-            gameTiles[i].innerText = "";
-            turnTotal = "0";
-            alertWindow.innerText = "Welcome to lemonLines!"
+        for (let i = 0; i < gameTiles.length; i++) {
+        gameTiles[i].classList ="gameTile"
+        gameTiles[i].innerText = ""
+        turnTotal = "0"
+        xPlayer = []
+        oPlayer = []
+        alertWindow.innerText = "Welcome to lemonLines!"
         }
     })
+                
+})
+
+
 
 
     // for (let i = 0; i < winStates.length; i++)
