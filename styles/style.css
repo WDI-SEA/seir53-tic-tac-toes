@@ -9,6 +9,7 @@ FFCA3A
 * {
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
 }
 body {
   font-family: 'Balsamiq Sans', cursive;
@@ -25,8 +26,8 @@ h1 {
 .container {
   margin: 0 auto;
   display: grid;
-  width: 300px;
-  height: 300px;
+  width: 318px;
+  height: 318px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   margin-bottom: 30px;

@@ -26,9 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
     ["top-right", "mid-mid", "bot-left"]
   ]
   //TODO where to add
-  // if (gameStatus.innerText === "") {
-  //   gameStatus.style.background = "#ffffff"
-  // }
+  if (gameStatus.innerText === "") {
+    gameStatus.style.background = "#ffffff"
+  }
 
 
   //click event for tiles.
@@ -41,6 +41,11 @@ window.addEventListener("DOMContentLoaded", () => {
         event.target.className += " clicked";
         totalMoves++;
         // event.target.innerText = totalMoves % 2 === 0 ? "X" : "O" // alternate xs and os
+        if (gameStatus.innerText = "") {
+          gameStatus.status
+        } 
+
+        
         if (totalMoves === 9) {
           gameStatus.innerText = "You Tied"
         }
