@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function boxClick(event) {
         let tileCheck = event.target
         if (tileCheck.classList.contains("playedX") || tileCheck.classList.contains("playedO")) {
-            userMessage.innerText = "Tile already played. Click again."
+            userMessage.innerText = "Pathetic Human"
         } else {
             if (totalMoves % 2 === 0) {
                 tileCheck.classList.add("playedX")
@@ -42,8 +42,8 @@ window.addEventListener("DOMContentLoaded", () => {
             endGame()
          }
          if (totalMoves === 9) {
-        winnerBanner.innerText = "GAME TIED"
-        userMessage.innerText = "Play again?"
+        winnerBanner.innerText = "GAME TIED!"
+        userMessage.innerText = " ...yubaba wants to see you"
         endGame()
         stopGame()
         }
@@ -59,7 +59,7 @@ function endGame () {
         if (playerXMoves.includes(winningArray[i][y])) {
           winFoundX++
           if (winFoundX === 3) {
-            userMessage.innerText = "  "
+            userMessage.innerText = " your name belongs to me now "
             winnerCircle.innerText = "Player X won!"
             stopGame()
           }
@@ -68,7 +68,7 @@ function endGame () {
         winFoundO++
         if (winFoundO === 3) {
           winnerCircle.innerText = "Player o has won!!"
-          userMessage.innerText = "   "
+          userMessage.innerText = "or maybe you prefer a lump of coal!"
           stopGame()
         }
       }
